@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function endOfHour(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var date=toDate(dirtyDate);date.setMinutes(59,59,999);return date}

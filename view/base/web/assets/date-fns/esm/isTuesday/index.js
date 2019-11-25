@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function isTuesday(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}return 2===toDate(dirtyDate).getDay()}

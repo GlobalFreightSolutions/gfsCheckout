@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function isEqual(dirtyLeftDate,dirtyRightDate){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var dateLeft=toDate(dirtyLeftDate),dateRight=toDate(dirtyRightDate);return dateLeft.getTime()===dateRight.getTime()}

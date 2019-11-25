@@ -1,0 +1,1 @@
+import differenceInMilliseconds from"../differenceInMilliseconds/index.js";export default function differenceInSeconds(dirtyDateLeft,dirtyDateRight){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var diff=differenceInMilliseconds(dirtyDateLeft,dirtyDateRight)/1e3;return 0<diff?Math.floor(diff):Math.ceil(diff)}

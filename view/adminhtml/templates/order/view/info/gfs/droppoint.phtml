@@ -1,0 +1,25 @@
+<?php
+    /** @var \JustShout\Gfs\Block\Adminhtml\Order\View\Info\Gfs $block */
+    $time = $block->getServiceTime();
+    $latestDespatch = $block->getDespatchDate();
+    $address = $block->getDropPointServiceAddress();
+?>
+
+<div style="overflow: hidden;">
+    <p><strong>Service:</strong> <?= $block->getServiceTitle() ?></p>
+    <?php if ($time): ?>
+        <p><?= $time ?></p>
+    <?php endif; ?>
+    <?php if ($latestDespatch): ?>
+        <p><?= $latestDespatch ?></p>
+    <?php endif; ?>
+    <?php if($address): ?>
+        <p><strong>Address:</strong></p>
+        <address><?= $address ?></address>
+        <br/>
+    <?php endif; ?>
+    <p><strong>Store ID:</strong> <?= $block->getDroppointId() ?></p>
+    <p><strong>Carrier:</strong> <?= $block->getCarrier() ?></p>
+    <p><strong>Service Code:</strong> <?= $block->getServiceCode() ?></p>
+    <p><strong><?= $block->getShippingAmount() ?></strong></p>
+</div>

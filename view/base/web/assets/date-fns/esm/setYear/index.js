@@ -1,0 +1,1 @@
+import toInteger from"../_lib/toInteger/index.js";import toDate from"../toDate/index.js";export default function setYear(dirtyDate,dirtyYear){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),year=toInteger(dirtyYear);if(isNaN(date)){return new Date(NaN)}date.setFullYear(year);return date}

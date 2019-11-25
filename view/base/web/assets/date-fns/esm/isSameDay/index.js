@@ -1,0 +1,1 @@
+import startOfDay from"../startOfDay/index.js";export default function isSameDay(dirtyDateLeft,dirtyDateRight){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var dateLeftStartOfDay=startOfDay(dirtyDateLeft),dateRightStartOfDay=startOfDay(dirtyDateRight);return dateLeftStartOfDay.getTime()===dateRightStartOfDay.getTime()}

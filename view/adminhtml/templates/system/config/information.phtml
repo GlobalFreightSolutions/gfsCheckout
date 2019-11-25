@@ -1,0 +1,20 @@
+<?php /** @var \JustShout\Gfs\Block\Adminhtml\System\Config\Information $block */ ?>
+
+<div class="gfs-information" style="background-image: url('<?= $block->getLogoSrc() ?>');">
+    <p><?= __('GFS Checkout is the free delivery options tool that gives you the power to offer better delivery choice and convenience for your customers. Give your customers the choice of a variety of shipping options based on their specific order or address – no matter where they are in the world.') ?></p>
+    <strong><?= __('Version - %1', $block->getModuleVersion()) ?></strong>
+    <div class="gfs-information__actions">
+        <a href="<?= $block->getCheckoutLoginUrl()?>"
+           target="_blank"
+           title="<?= __('Portal Login') ?>"
+           class="action-primary">
+            <?= __('Portal Login') ?>
+        </a>
+        <a href="<?= $block->getCheckoutRegisterUrl()?>"
+           target="_blank"
+           title="<?= __('Portal Registration') ?>"
+           class="action-default">
+            <?= __('Portal Registration') ?>
+        </a>
+    </div>
+</div>

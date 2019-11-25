@@ -1,0 +1,1 @@
+import toInteger from"../_lib/toInteger/index.js";import toDate from"../toDate/index.js";export default function setDayOfYear(dirtyDate,dirtyDayOfYear){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),dayOfYear=toInteger(dirtyDayOfYear);date.setMonth(0);date.setDate(dayOfYear);return date}

@@ -1,0 +1,1 @@
+import isSameWeek from"../isSameWeek/index.js";export default function isSameISOWeek(dirtyDateLeft,dirtyDateRight){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}return isSameWeek(dirtyDateLeft,dirtyDateRight,{weekStartsOn:1})}

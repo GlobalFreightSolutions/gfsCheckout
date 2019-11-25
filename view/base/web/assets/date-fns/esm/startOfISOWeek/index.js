@@ -1,0 +1,1 @@
+import startOfWeek from"../startOfWeek/index.js";export default function startOfISOWeek(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}return startOfWeek(dirtyDate,{weekStartsOn:1})}

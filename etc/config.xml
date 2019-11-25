@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <gfs>
+                <active>1</active>
+                <model>JustShout\Gfs\Model\Carrier\Gfs</model>
+                <title><![CDATA[GFS Delivery]]></title>
+                <name><![CDATA[GFS Delivery]]></name>
+                <sallowspecific>0</sallowspecific>
+                <price>0</price>
+                <specificerrmsg>This shipping method is not available. please contact us.</specificerrmsg>
+                <type>I</type>
+                <standard_delivery_title><![CDATA[Standard Delivery]]></standard_delivery_title>
+                <calendar_delivery_title><![CDATA[Choose a delivery date and time]]></calendar_delivery_title>
+                <drop_point_title><![CDATA[Collect your order]]></drop_point_title>
+                <service_sort_order>cheapestFirst</service_sort_order>
+                <date_range>14</date_range>
+                <use_standard>1</use_standard>
+                <use_droppoints>1</use_droppoints>
+                <use_calendar>1</use_calendar>
+                <use_stores>1</use_stores>
+                <use_droppoints_stores>1</use_droppoints_stores>
+                <default_service>Standard</default_service>
+                <default_carrier>YODEL</default_carrier>
+                <default_carrier_code>ECO</default_carrier_code>
+                <default_price>2.50</default_price>
+                <default_min_delivery_time>1</default_min_delivery_time>
+                <default_max_delivery_time>5</default_max_delivery_time>
+                <color_primary><![CDATA[#B20000]]]></color_primary>
+                <color_secondary><![CDATA[#FFFFFF]]]></color_secondary>
+                <color_tertiary><![CDATA[#000000]]]></color_tertiary>
+                <show_calendar_no_services>0</show_calendar_no_services>
+                <calendar_no_services><![CDATA[There are no services available on this day]]]></calendar_no_services>
+                <disable_prev_days>0</disable_prev_days>
+                <disable_next_days>0</disable_next_days>
+            </gfs>
+        </carriers>
+    </default>
+</config>

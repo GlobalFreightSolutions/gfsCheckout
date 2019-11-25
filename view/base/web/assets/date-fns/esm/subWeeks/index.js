@@ -1,0 +1,1 @@
+import toInteger from"../_lib/toInteger/index.js";import addWeeks from"../addWeeks/index.js";export default function subWeeks(dirtyDate,dirtyAmount){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var amount=toInteger(dirtyAmount);return addWeeks(dirtyDate,-amount)}

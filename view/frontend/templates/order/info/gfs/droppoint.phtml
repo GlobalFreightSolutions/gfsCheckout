@@ -1,0 +1,44 @@
+<?php
+    /** @var \JustShout\Gfs\Block\Order\Info\Gfs $block */
+    $time = $block->getServiceTime();
+    $gfsLogo = $block->getGfsLogo();
+    $address = $block->getDropPointAddress();
+    $openingTimes = $block->getDropPointOpeningTimes();
+?>
+
+<div class="gfs-shipping-method gfs-shipping-method__droppoint">
+    <p class="gfs-shipping-method__title"><?= $block->getServiceTitle() ?></p>
+    <?php if ($time): ?>
+        <p class="gfs-shipping-method__time"><?= $time ?></p>
+    <?php endif; ?>
+    <?php if($address): ?>
+        <address><?= $address ?></address>
+    <?php endif; ?>
+    <?php if ($openingTimes): ?>
+        <a href="#" class="opening-times-toggle"><?= __('More Details') ?></a>
+        <ul class="opening-times">
+            <?php foreach ($openingTimes as $openingTime): ?>
+                <li>
+                    <strong><?= $openingTime['day'] ?></strong>
+                    <span><?= $openingTime['from'] ?> - <?= $openingTime['to'] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <script>
+            require ([
+                'jquery',
+                'domReady!'
+            ], function($) {
+                $('.opening-times-toggle').on('click', function(e) {
+                    $('.opening-times').toggleClass('show-times');
+                    e.preventDefault();
+                });
+            });
+        </script>
+    <?php endif; ?>
+    <?php if ($gfsLogo): ?>
+        <div class="gfs-shipping-method__powered">
+            <span><?= __('Delivery options powered by') ?></span><img src="<?= $gfsLogo ?>"/>
+        </div>
+    <?php endif; ?>
+</div>

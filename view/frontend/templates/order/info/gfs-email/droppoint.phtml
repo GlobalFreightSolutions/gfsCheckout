@@ -1,0 +1,54 @@
+<?php
+    /** @var \JustShout\Gfs\Block\Order\Info\Gfs $block */
+    $time = $block->getServiceTime();
+    $gfsLogo = $block->getGfsLogo();
+    $address = $block->getDropPointAddress();
+    $openingTimes = $block->getDropPointOpeningTimes();
+?>
+
+<div class="gfs-shipping-method gfs-shipping-method__droppoint">
+    <p class="gfs-shipping-method__title"><?= $block->getServiceTitle() ?></p>
+    <?php if ($time): ?>
+        <p class="gfs-shipping-method__time"><?= $time ?></p>
+    <?php endif; ?>
+    <?php if($address): ?>
+        <address><?= $address ?></address>
+    <?php endif; ?>
+    <?php if ($openingTimes): ?>
+        <ul class="opening-times">
+            <?php foreach ($openingTimes as $openingTime): ?>
+                <li>
+                    <strong><?= $openingTime['day'] ?></strong>
+                    <span><?= $openingTime['from'] ?> - <?= $openingTime['to'] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+    <?php if ($gfsLogo): ?>
+        <div class="gfs-shipping-method__powered">
+            <span><?= __('Delivery options powered by') ?></span><img src="<?= $gfsLogo ?>"/>
+        </div>
+    <?php endif; ?>
+</div>
+
+<style type="text/css">
+    .gfs-shipping-method__droppoint address {
+        margin-bottom: 10px;
+    }
+    .gfs-shipping-method__droppoint .opening-times {
+        list-style: none;
+        padding: 0;
+    }
+    .gfs-shipping-method__droppoint .opening-times li {
+        margin-bottom: 5px !important;
+    }
+    .gfs-shipping-method__droppoint .opening-times strong {
+        display: inline-block;
+        min-width: 30px;
+    }
+    .gfs-shipping-method__powered img {
+        vertical-align: middle;
+        width: 67px;
+        margin-left: 8px;
+    }
+</style>

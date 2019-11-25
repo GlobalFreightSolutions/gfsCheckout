@@ -1,0 +1,96 @@
+<strong>Delivery Between:</strong> %1 - %2,<strong>Delivery Between:</strong> %1 - %2
+Type,Type
+Value,Value
+Add Custom Field,Add Custom Field
+Test Connection,Test Connection
+Customer Attributes,Customer Attributes
+Address Attributes,Address Attributes
+Integer (Number),Integer (Number)
+Double (Decimal),Double (Decimal)
+String (Text),String (Text)
+Delivery Between %1 - %2,Delivery Between %1 - %2
+Connection to GFS has been successful,Connection to GFS has been successful
+There has been an error trying to connect to GFS. please check your logs,There has been an error trying to connect to GFS. please check your logs
+Standard Delivery,Standard Delivery
+Collect Your Order,Collect Your Order
+Store,Store
+Cheapest First,Cheapest First
+Fastest First,Fastest First
+Expensive First,Expensive First
+Slowest First,Slowest First
+<strong>Service:</strong> %1 - %2,<strong>Service:</strong> %1 - %2
+<strong>Carrier:</strong> %1,<strong>Carrier:</strong> %1
+<strong>Service Code:</strong> %1,<strong>Service Code:</strong> %1
+<address><strong>Address:</strong><br/> %1</address>,<address><strong>Address:</strong><br/> %1</address>
+Payment &amp; Shipping Method,Payment &amp; Shipping Method
+Payment Information,Payment Information
+The order was placed using %1.,The order was placed using %1.
+Shipping Information,Shipping Information
+Total Shipping Charges,Total Shipping Charges
+Incl. Tax,Incl. Tax
+Items Refunded,Items Refunded
+No Items,No Items
+Memo Total,Memo Total
+Credit Memo History,Credit Memo History
+Credit Memo Totals,Credit Memo Totals
+Items Invoiced,Items Invoiced
+Order Total,Order Total
+Invoice History,Invoice History
+Invoice Totals,Invoice Totals
+Shipping and Tracking Information,Shipping and Tracking Information
+Track this shipment,Track this shipment
+Items Shipped,Items Shipped
+Shipment History,Shipment History
+Shipping &amp; Handling Information,Shipping &amp; Handling Information
+Add,Add
+Add after,Add after
+Delete,Delete
+GFS Checkout is the free delivery options tool that gives you the power to offer better delivery choice and convenience for your customers. Give your customers the choice of a variety of shipping options based on their specific order or address – no matter where they are in the world.,GFS Checkout is the free delivery options tool that gives you the power to offer better delivery choice and convenience for your customers. Give your customers the choice of a variety of shipping options based on their specific order or address – no matter where they are in the world.
+Version - %1,Version - %1
+Portal Login,Portal Login
+Portal Registration,Portal Registration
+Nominated Day,Nominated Day
+Powered By,Powered By
+Drop Point Delivery,Drop Point Delivery
+More Details,More Details
+JustShout Gfs Shipping,JustShout Gfs Shipping
+GFS (Global Freight Solutions),GFS (Global Freight Solutions)
+General Settings,General Settings
+Enabled,Enabled
+Retailer ID,Retailer ID
+Retailer Secret,Retailer Secret
+Use This button to test your connection. Please ensure that you have saved your Retailer ID and Retailer Secret before testing yor connection.,Use This button to test your connection. Please ensure that you have saved your Retailer ID and Retailer Secret before testing yor connection.
+Shipping Method Title,Shipping Method Title
+This value will be shown in the store as the shipping methods title.,This value will be shown in the store as the shipping methods title.
+Shipping Method Name,Shipping Method Name
+This value will be shown in the store as the shipping methods name.,This value will be shown in the store as the shipping methods name.
+Delivery Types,Delivery Types
+Ship to Allowed Countries,Ship to Allowed Countries
+Colour,Colour
+Custom Fields - Customer,Custom Fields - Customer
+This field will allow you to map up to 3 custom fields for order items based on the customer/address attribute values.,This field will allow you to map up to 3 custom fields for order items based on the customer/address attribute values.
+Custom Fields - Order Item,Custom Fields - Order Item
+This field will allow you to map up to 3 custom fields for order items based on the product attribute values.,This field will allow you to map up to 3 custom fields for order items based on the product attribute values.
+Checkout Widget Options,Checkout Widget Options
+Standard Delivery Title,Standard Delivery Title
+Title displayed for the standard (non-day-definite) section. Defaults to 'Standard Delivery'.,Title displayed for the standard (non-day-definite) section. Defaults to 'Standard Delivery'.
+Calender Delivery Title,Calender Delivery Title
+Title displayed for the day-definite section. Defaults to 'Choose a delivery date and time'.,Title displayed for the day-definite section. Defaults to 'Choose a delivery date and time'.
+Drop Point Delivery Title,Drop Point Delivery Title
+Title displayed for the drop point section. Defaults to 'Collect your order'.,Title displayed for the drop point section. Defaults to 'Collect your order'.
+Service Sort Order,Service Sort Order
+Map Home Icon,Map Home Icon
+Default Service,Default Service
+The name of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout servers.,The name of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout servers.
+Default Carrier,Default Carrier
+The default carrier to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.,The default carrier to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.
+Default Carrier Code,Default Carrier Code
+The default carrier code to be offered to the customer in the event that the widget cannot contact the GFS Checkout server..,The default carrier code to be offered to the customer in the event that the widget cannot contact the GFS Checkout server..
+Default Price,Default Price
+The price of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.,The price of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.
+Default Min Delivery Time,Default Min Delivery Time
+The minimum delivery time in days of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.,The minimum delivery time in days of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.
+Default Max Delivery Time,Default Max Delivery Time
+The maximum delivery time in days of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.,The maximum delivery time in days of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout server.
+GFS Shipping Details,GFS Shipping Details
+There are no services available on this day,There are no services available on this day

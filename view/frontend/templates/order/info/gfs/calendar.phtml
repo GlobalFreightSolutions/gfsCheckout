@@ -1,0 +1,13 @@
+<?php
+    /** @var \JustShout\Gfs\Block\Order\Info\Gfs $block */
+    $gfsLogo = $block->getGfsLogo();
+?>
+
+<div class="gfs-shipping-method gfs-shipping-method__calender">
+    <p class="gfs-shipping-method__title"><?= $block->getServiceTitle() ?></p>
+    <?php if ($gfsLogo): ?>
+        <div class="gfs-shipping-method__powered">
+            <span><?= __('Delivery options powered by') ?></span><img src="<?= $gfsLogo ?>"/>
+        </div>
+    <?php endif; ?>
+</div>

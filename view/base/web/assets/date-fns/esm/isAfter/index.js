@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function isAfter(dirtyDate,dirtyDateToCompare){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),dateToCompare=toDate(dirtyDateToCompare);return date.getTime()>dateToCompare.getTime()}

@@ -1,0 +1,1 @@
+export const ThemePropertyMixin=superClass=>class extends superClass{static get properties(){return{theme:{type:String,readOnly:!0}}}attributeChangedCallback(name,oldValue,newValue){super.attributeChangedCallback(name,oldValue,newValue);if("theme"===name){this._setTheme(newValue)}}};

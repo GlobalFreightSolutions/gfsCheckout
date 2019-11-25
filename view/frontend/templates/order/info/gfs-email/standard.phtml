@@ -1,0 +1,25 @@
+<?php
+    /** @var \JustShout\Gfs\Block\Order\Info\Gfs $block */
+    $time = $block->getServiceTime();
+    $gfsLogo = $block->getGfsLogo();
+?>
+
+<div class="gfs-shipping-method gfs-shipping-method__standard">
+    <p class="gfs-shipping-method__title"><?= $block->getServiceTitle() ?></p>
+    <?php if ($time): ?>
+        <p class="gfs-shipping-method__time"><?= $time ?></p>
+    <?php endif; ?>
+    <?php if ($gfsLogo): ?>
+    <div class="gfs-shipping-method__powered">
+        <span><?= __('Delivery options powered by') ?></span><img src="<?= $gfsLogo ?>"/>
+    </div>
+    <?php endif; ?>
+</div>
+
+<style type="text/css">
+    .gfs-shipping-method__powered img {
+        vertical-align: middle;
+        width: 67px;
+        margin-left: 8px;
+    }
+</style>

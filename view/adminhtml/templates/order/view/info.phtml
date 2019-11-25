@@ -1,0 +1,22 @@
+<?php
+    /** @var \Magento\Sales\Block\Adminhtml\Order\AbstractOrder $block */
+    use JustShout\Gfs\Block\Adminhtml\Order\View\Info\Gfs;
+?>
+<?php if (!$block->getOrder()->getIsVirtual()): ?>
+<div class="admin__page-section-item order-shipping-method">
+    <div class="admin__page-section-item-title">
+        <span class="title">
+            <?= __('Shipping Details') ?>
+        </span>
+    </div>
+    <div class="admin__page-section-item-content">
+        <?php
+            /** @var Gfs $gfsBlock */
+            $gfsBlock = $block->getLayout()->createBlock(Gfs::class);
+            $gfsBlock->setOrder($block->getOrder());
+            echo $gfsBlock->toHtml()
+        ?>
+    </div>
+</div>
+<?php endif; ?>
+

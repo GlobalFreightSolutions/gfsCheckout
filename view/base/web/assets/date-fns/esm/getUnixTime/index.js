@@ -1,0 +1,1 @@
+import getTime from"../getTime/index.js";export default function getUnixTime(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}return Math.floor(getTime(dirtyDate)/1e3)}

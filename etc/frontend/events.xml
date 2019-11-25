@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="gfs_checkout_set_address" instance="JustShout\Gfs\Observer\SetInitialAddressObserver"/>
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_index">
+        <observer name="gfs_checkout_cary_set_address" instance="JustShout\Gfs\Observer\SetInitialAddressObserver"/>
+    </event>
+</config>

@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function startOfYear(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var cleanDate=toDate(dirtyDate),date=new Date(0);date.setFullYear(cleanDate.getFullYear(),0,1);date.setHours(0,0,0,0);return date}

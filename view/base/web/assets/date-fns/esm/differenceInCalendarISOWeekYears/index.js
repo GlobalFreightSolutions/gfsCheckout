@@ -1,0 +1,1 @@
+import getISOWeekYear from"../getISOWeekYear/index.js";export default function differenceInCalendarISOWeekYears(dirtyDateLeft,dirtyDateRight){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}return getISOWeekYear(dirtyDateLeft)-getISOWeekYear(dirtyDateRight)}

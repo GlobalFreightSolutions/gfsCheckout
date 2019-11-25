@@ -1,0 +1,1 @@
+import differenceInMonths from"../differenceInMonths/index.js";export default function differenceInQuarters(dirtyDateLeft,dirtyDateRight){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var diff=differenceInMonths(dirtyDateLeft,dirtyDateRight)/3;return 0<diff?Math.floor(diff):Math.ceil(diff)}

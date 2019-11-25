@@ -1,0 +1,1 @@
+import lastDayOfWeek from"../lastDayOfWeek/index.js";export default function lastDayOfISOWeek(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}return lastDayOfWeek(dirtyDate,{weekStartsOn:1})}

@@ -1,0 +1,31 @@
+<?php /* @var JustShout\Gfs\Block\Adminhtml\System\Config\Connect $block */ ?>
+
+<?= $block->getButtonHtml() ?>
+
+<script>
+    require([
+        'jquery',
+        'domReady!'
+    ], function($) {
+        $('#<?= $block->getButtonIdAttr() ?>').on('click', function() {
+            var message = $('#<?= $block->getButtonIdAttr() ?>_result');
+            message.html('');
+            $.ajax({
+                url: '<?= $block->getAjaxUrl(); ?>',
+                type: 'GET',
+                dataType: 'json',
+                showLoader: true
+            }).done(function (data) {
+                message.removeClass('message-error');
+                message.addClass('message-success');
+                message.html(data.message);
+                message.show();
+            }).fail(function () {
+                message.removeClass('message-success');
+                message.addClass('message-error');
+                message.html('<?= __('There has been an error trying to connect to GFS. please check your logs') ?>');
+                message.show();
+            });
+        });
+    });
+</script>

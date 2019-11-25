@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function isLeapYear(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),year=date.getFullYear();return 0===year%400||0===year%4&&0!==year%100}

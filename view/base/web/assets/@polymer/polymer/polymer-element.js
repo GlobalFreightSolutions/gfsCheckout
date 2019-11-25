@@ -1,0 +1,1 @@
+import{ElementMixin}from"./lib/mixins/element-mixin.js";export{html}from"./lib/utils/html-tag.js";export const PolymerElement=ElementMixin(HTMLElement);

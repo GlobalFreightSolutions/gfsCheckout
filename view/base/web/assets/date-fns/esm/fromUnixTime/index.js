@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";import toInteger from"../_lib/toInteger/index.js";export default function fromUnixTime(dirtyUnixTime){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var unixTime=toInteger(dirtyUnixTime);return toDate(1e3*unixTime)}

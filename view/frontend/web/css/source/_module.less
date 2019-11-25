@@ -1,0 +1,109 @@
+@checkout-sidebar-shipping-information__padding: @indent__l;
+@checkout-sidebar-shipping-information__line-height: @checkout-billing-address-details__line-height;
+
+@checkout-sidebar-shipping-information-edit-icon__color: @minicart-icons-color;
+@checkout-sidebar-shipping-information-edit-icon__content: @icon-settings;
+@checkout-sidebar-shipping-information-edit-icon__font-size: 28px;
+@checkout-sidebar-shipping-information-edit-icon__line-height: 28px;
+@checkout-sidebar-shipping-information-edit-icon__top: 2px;
+@checkout-sidebar-shipping-information-edit-icon__hover__color: @primary__color;
+
+& when (@media-common = true) {
+  .block-order-details-view {
+    .gfs-shipping-method {
+      h3 {
+        margin-top: 0;
+        font-size: 1.4rem;
+      }
+
+      address,
+      .opening-times {
+        margin-bottom: 10px;
+      }
+
+      .opening-times {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin-top: 0;
+
+        &.show-times {
+          display: block;
+        }
+
+        strong {
+          min-width: 32px;
+          display: inline-block;
+        }
+      }
+
+      &__powered {
+        padding-top: 10px;
+
+        span {
+          font-size: 1.2rem;
+        }
+
+        img {
+          display: inline-block;
+          margin-left: 4px;
+          width: 25px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  #checkout-step-shipping_method {
+
+    #gfs-checkout-widget {
+      margin-top: 15px;
+    }
+
+    .gfs-notice {
+      margin-top: 15px;
+
+      &__icon {
+        width: 40px;
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    }
+
+    .table-checkout-shipping-method {
+      display: none;
+    }
+  }
+
+  .opc-block-shipping-information {
+    .shipping-information {
+      display: none;
+    }
+  }
+
+  .gfs-shipping-information {
+    margin: 0 0 @indent__base;
+    position: relative;
+
+    .action-edit {
+      &:extend(.abs-action-button-as-link all);
+      .lib-css(top, @checkout-sidebar-shipping-information-edit-icon__top);
+      .lib-icon-font(
+        @checkout-sidebar-shipping-information-edit-icon__content,
+        @_icon-font-size: @checkout-sidebar-shipping-information-edit-icon__font-size,
+        @_icon-font-line-height: @checkout-sidebar-shipping-information-edit-icon__line-height,
+        @_icon-font-text-hide: true,
+        @_icon-font-color: @checkout-sidebar-shipping-information-edit-icon__color,
+        @_icon-font-color-hover: @checkout-sidebar-shipping-information-edit-icon__hover__color,
+        @_icon-font-color-active: @checkout-sidebar-shipping-information-edit-icon__color
+      );
+      margin: 0;
+      position: absolute;
+      right: 10px;
+    }
+
+    &-content {
+      padding-top: 40px;
+    }
+  }
+}

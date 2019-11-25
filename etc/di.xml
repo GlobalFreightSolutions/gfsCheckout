@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="gfs_despatch_by" xsi:type="string">sales_order.gfs_despatch_by</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="JustShout\Gfs\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="JustShout\Gfs\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">gfsLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">JustShout\Gfs\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="removeOtherShippingRates" type="JustShout\Gfs\Plugin\Quote\Model\Quote\AddressPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="setGuestAddressSession" type="JustShout\Gfs\Plugin\Quote\Model\ShippingMethodManagementPlugin"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="setGfsShippingData" type="JustShout\Gfs\Plugin\Checkout\Model\ShippingInformationManagementPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Invoice">
+        <plugin name="setInvoicePdfDetails" type="JustShout\Gfs\Plugin\Sales\Model\Order\Pdf\InvoicePlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Shipment">
+        <plugin name="setShipmentPdfDetails" type="JustShout\Gfs\Plugin\Sales\Model\Order\Pdf\ShipmentPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Pdf\Creditmemo">
+        <plugin name="setCreditMemoPdfDetails" type="JustShout\Gfs\Plugin\Sales\Model\Order\Pdf\CreditmemoPlugin"/>
+    </type>
+    <preference for="Magento\Email\Model\Template\Filter" type="JustShout\Gfs\Model\Email\Filter"/>
+    <preference for="Magento\Quote\Model\Quote\Address" type="JustShout\Gfs\Model\Quote\Address"/>
+    <preference for="Magento\Quote\Model\Quote\Address\Total\Shipping" type="JustShout\Gfs\Model\Quote\Address\Total\Shipping"/>
+</config>

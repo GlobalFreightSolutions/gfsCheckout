@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";export default function endOfQuarter(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),currentMonth=date.getMonth();date.setMonth(currentMonth-currentMonth%3+3,0);date.setHours(23,59,59,999);return date}

@@ -1,0 +1,1 @@
+import toInteger from"../_lib/toInteger/index.js";import toDate from"../toDate/index.js";export default function setMinutes(dirtyDate,dirtyMinutes){if(2>arguments.length){throw new TypeError("2 arguments required, but only "+arguments.length+" present")}var date=toDate(dirtyDate),minutes=toInteger(dirtyMinutes);date.setMinutes(minutes);return date}

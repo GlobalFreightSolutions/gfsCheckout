@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="JustShout\Gfs\Block\Html\Head" name="gfs.head.block" template="JustShout_Gfs::html/head.phtml">
+                <block class="JustShout\Gfs\Block\Html\Head" name="gfs.head.imports" template="JustShout_Gfs::html/head/imports.phtml"/>
+                <block class="JustShout\Gfs\Block\Html\Head" name="gfs.head.widgets" template="JustShout_Gfs::html/head/widgets.phtml"/>
+                <block class="JustShout\Gfs\Block\Html\Head" name="gfs.head.scripts" template="JustShout_Gfs::html/head/scripts.phtml"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

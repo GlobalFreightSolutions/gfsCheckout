@@ -1,0 +1,1 @@
+import toDate from"../toDate/index.js";import isLeapYear from"../isLeapYear/index.js";export default function getDaysInYear(dirtyDate){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}var date=toDate(dirtyDate);if(isNaN(date)){return NaN}return isLeapYear(date)?366:365}

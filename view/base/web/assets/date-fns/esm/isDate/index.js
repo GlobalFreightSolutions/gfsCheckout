@@ -1,0 +1,1 @@
+export default function isDate(value){if(1>arguments.length){throw new TypeError("1 argument required, but only "+arguments.length+" present")}return value instanceof Date||"object"===typeof value&&"[object Date]"===Object.prototype.toString.call(value)}

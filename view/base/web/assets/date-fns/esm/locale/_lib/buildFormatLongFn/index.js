@@ -1,0 +1,1 @@
+export default function buildFormatLongFn(args){return function(dirtyOptions){var options=dirtyOptions||{},width=options.width?options.width+"":args.defaultWidth,format=args.formats[width]||args.formats[args.defaultWidth];return format}}

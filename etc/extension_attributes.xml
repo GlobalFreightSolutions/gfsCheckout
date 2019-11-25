@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Checkout\Api\Data\ShippingInformationInterface">
+        <attribute code="gfs_shipping_data" type="string"/>
+        <attribute code="gfs_checkout_result" type="string"/>
+        <attribute code="gfs_session_id" type="string"/>
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="gfs_close_checkout" type="string"/>
+        <attribute code="gfs_despatch_by" type="string"/>
+    </extension_attributes>
+</config>

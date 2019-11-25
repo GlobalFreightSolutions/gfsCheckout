@@ -1,0 +1,1 @@
+export default function toInteger(dirtyNumber){if(null===dirtyNumber||!0===dirtyNumber||!1===dirtyNumber){return NaN}var number=+dirtyNumber;if(isNaN(number)){return number}return 0>number?Math.ceil(number):Math.floor(number)}
