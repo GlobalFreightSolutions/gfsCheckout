@@ -29,3 +29,5 @@ After you have received these details, set the Enabled dropdown to `Yes` and the
 After setting these options, you will have a variety of options you can change to personalise the GFS widgets in your magento checkout
 Please note that by installing and enabling the GFS module, other shipping methods will not be available on the store.
 
+## License
+[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
