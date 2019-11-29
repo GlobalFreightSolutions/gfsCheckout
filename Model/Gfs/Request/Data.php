@@ -4,7 +4,6 @@ namespace JustShout\Gfs\Model\Gfs\Request;
 
 use JustShout\Gfs\Helper\Config;
 use JustShout\Gfs\Model\Gfs\Cookie;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Catalog\Model\Product;
@@ -84,34 +83,28 @@ class Data
     protected $_addressCookie;
 
     /**
-     * @var ScopeConfigInterface
-     */
-    protected $_scopeConfig;
-
-    /**
      * Data constructor
      *
-     * @param Config                $config
-     * @param Session               $checkoutSession
-     * @param ProductFactory        $productFactory
-     * @param CustomerFactory       $customerFactory
+     * @param Config $config
+     * @param Session $checkoutSession
+     * @param ProductFactory $productFactory
+     * @param CustomerFactory $customerFactory
      * @param StoreManagerInterface $storeManager
-     * @param CountryFactory        $countryFactory
-     * @param Json                  $json
-     * @param Cookie\Address        $addressCookie
-     * @param ScopeConfigInterface  $scopeConfig
+     * @param CountryFactory $countryFactory
+     * @param Json $json
+     * @param Cookie\Address $addressCookie
      */
     public function __construct(
-        Config                $config,
-        Session               $checkoutSession,
-        ProductFactory        $productFactory,
-        CustomerFactory       $customerFactory,
+        Config $config,
+        Session $checkoutSession,
+        ProductFactory $productFactory,
+        CustomerFactory $customerFactory,
         StoreManagerInterface $storeManager,
-        CountryFactory        $countryFactory,
-        Json                  $json,
-        Cookie\Address        $addressCookie,
-        ScopeConfigInterface  $scopeConfig
-    ) {
+        CountryFactory $countryFactory,
+        Json $json,
+        Cookie\Address $addressCookie
+    )
+    {
         $this->_config = $config;
         $this->_checkoutSession = $checkoutSession;
         $this->_productFactory = $productFactory;
@@ -120,7 +113,6 @@ class Data
         $this->_countryFactory = $countryFactory;
         $this->_json = $json;
         $this->_addressCookie = $addressCookie;
-        $this->_scopeConfig = $scopeConfig;
     }
 
     /**
@@ -156,26 +148,15 @@ class Data
         }
 
         $initialAddress = [];
-        if (is_array($address->getStreet()) ) {
-            $streets = $address->getStreet();
-        } else {
-            $streets = explode("\n", $address->getStreet());
-        }
-
-        foreach ($streets as $street) {
+        foreach (explode("\n", $address->getStreet()) as $street) {
             $initialAddress[] = $street;
         }
         $initialAddress[] = $address->getCity();
         $initialAddress[] = $address->getPostcode();
         /** @var Country $countryModel */
         $countryModel = $this->_countryFactory->create();
-        if ($address->getCountryId()) {
-            $countryId = $address->getCountryId();
-        } else {
-            $countryId = $address->getData('countryId');
-        }
         /** @var Country $country */
-        $country = $countryModel->loadByCode($countryId);
+        $country = $countryModel->loadByCode($address->getCountryId());
         $initialAddress[] = $country->getName();
 
         return implode(', ', $initialAddress);
@@ -224,7 +205,7 @@ class Data
 
         $customFields = $this->_getOrderCustomFields();
         if ($customFields) {
-            $order['additionalData'] = $customFields;
+            $order['additional'] = $customFields;
         }
 
         return $order;
@@ -237,49 +218,10 @@ class Data
      */
     protected function _getOrderDelivery()
     {
-        return [
-            'origin'      => $this->_getOrderOriginAddress(),
-            'destination' => $this->_getOrderDeliveryAddress(),
-        ];
-    }
-
-    /**
-     * Get Origin Address
-     *
-     * @return array
-     */
-    protected function _getOrderOriginAddress()
-    {
-        $data = [];
-
-        $data['street'] = implode(', ', array_filter([
-            $this->_scopeConfig->getValue('general/store_information/street_line1'),
-            $this->_scopeConfig->getValue('general/store_information/street_line2'),
-        ]));
-
-        $data['state'] = $this->_scopeConfig->getValue('general/store_information/region_id');
-        $data['city'] = $this->_scopeConfig->getValue('general/store_information/city');
-        $data['zip'] = $this->_scopeConfig->getValue('general/store_information/postcode');
-        $data['country'] = $this->_scopeConfig->getValue('general/store_information/country_id');
-
-        return $data;
-    }
-
-    /**
-     * Get Delivery Address
-     *
-     * @return array
-     */
-    protected function _getOrderDeliveryAddress()
-    {
         $data = [];
         $address = $this->_getQuoteAddress();
 
-        if (is_array($address->getStreet())) {
-            $data['street'] = implode(', ', $address->getStreet());
-        } else {
-            $data['street'] = str_replace("\n", ',', $address->getStreet());
-        }
+        $data['street'] =  str_replace("\n", ',', $address->getStreet());
         $data['city'] = $address->getCity();
         if ($address->getRegion()) {
             $data['state'] = $address->getRegion();
@@ -288,13 +230,12 @@ class Data
         }
 
         $data['zip'] = $address->getPostcode();
-        if ($address->getCountryId()) {
-            $data['country'] = $address->getCountryId();
-        } else {
-            $data['country'] = $address->getData('countryId');
-        }
+        $data['country'] = $address->getCountryId();
 
-        return $data;
+        return [
+            'origin' => $data,
+            'destination' => $data,
+        ];
     }
 
     /**
@@ -484,7 +425,6 @@ class Data
                 continue;
             }
             $type = isset($field['type']) ? $field['type'] : 'String';
-            $fieldName = $this->_getItemFieldName($type, $fieldNumber);
             $value = $this->_getProductAttributeValue(
                 (int) $item->getProduct()->getId(),
                 $attributeCode,
@@ -496,7 +436,7 @@ class Data
             }
 
             $fields[] = [
-                'name'  => $fieldName,
+                'name'  => $fieldNumber,
                 'value' => $value
             ];
 
@@ -504,19 +444,6 @@ class Data
         }
 
         return $fields;
-    }
-
-    /**
-     * Get item field name
-     *
-     * @param string $type
-     * @param int    $number
-     *
-     * @return string
-     */
-    protected function _getItemFieldName($type, $number)
-    {
-        return 'CUSTOM_ORDER_ITEM_' . strtoupper($type) . '_' . $number;
     }
 
     /**
@@ -591,7 +518,6 @@ class Data
                 continue;
             }
             $type = isset($field['type']) ? $field['type'] : 'String';
-            $fieldName = $this->_getCustomerFieldName($type, $fieldNumber);
             $value = $this->_getCustomerAttributeValue($customer, $attributeCode, $type);
 
             if (!$value && $value !== 0) {
@@ -599,7 +525,7 @@ class Data
             }
 
             $fields[] = [
-                'name'  => $fieldName,
+                'name'  => $fieldNumber,
                 'value' => $value
             ];
 
@@ -607,19 +533,6 @@ class Data
         }
 
         return $fields;
-    }
-
-    /**
-     * Get customer file name
-     *
-     * @param string $type
-     * @param int    $number
-     *
-     * @return string
-     */
-    protected function _getCustomerFieldName($type, $number)
-    {
-        return 'CUSTOM_ORDER_' . strtoupper($type) . '_' . $number;
     }
 
     /**
