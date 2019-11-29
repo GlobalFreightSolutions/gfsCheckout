@@ -44,11 +44,6 @@ class Config extends Data
     const CONFIG_METHOD_NAME = 'carriers/gfs/name';
 
     /**
-     * Delivery Types
-     */
-    const CONFIG_DELIVERY_TYPES = 'carriers/gfs/delivery_types';
-
-    /**
      * Allowed Countries
      */
     const CONFIG_ALLOWED_COUNTRIES = 'carriers/gfs/allowed_countries';
@@ -67,6 +62,16 @@ class Config extends Data
      * Tertiary Colour
      */
     const CONFIG_COLOR_TERTIARY = 'carriers/gfs/color_tertiary';
+
+    /**
+     * Widget Orientation
+     */
+    const CONFIG_WIDGET_ORIENTATION = 'carriers/gfs/orientation';
+
+    /**
+     * Default Delivery Method
+     */
+    const CONFIG_DELIVERY_DEFAULT_METHOD = 'carriers/gfs/default_delivery_method';
 
     /**
      * Customer Fields - Customer Account
@@ -114,6 +119,21 @@ class Config extends Data
     const CONFIG_DROP_POINT_DELIVERY_TITLE = 'carriers/gfs/drop_point_title';
 
     /**
+     * Get Drop Point List Button Name
+     */
+    const CONFIG_DROP_POINT_LIST_BUTTON_NAME = 'carriers/gfs/drop_point_list_button_name';
+
+    /**
+     * Get Drop Point List Button Name Unselected
+     */
+    const CONFIG_DROP_POINT_LIST_BUTTON_NAME_UNSELECTED = 'carriers/gfs/drop_point_list_button_name_unselected';
+
+    /**
+     * Get Drop Point SORT
+     */
+    const CONFIG_DROP_POINT_SORT = 'carriers/gfs/drop_point_sort';
+
+    /**
      * Get Service Sort Order
      */
     const CONFIG_SERVICE_SORT_ORDER = 'carriers/gfs/service_sort_order';
@@ -159,6 +179,31 @@ class Config extends Data
     const CONFIG_USE_CALENDAR = 'carriers/gfs/use_calendar';
 
     /**
+     * Request Standard
+     */
+    const CONFIG_REQUEST_STANDARD = 'carriers/gfs/request_standard';
+
+    /**
+     * Request Drop Poins
+     */
+    const CONFIG_REQUEST_DROPPOINTS = 'carriers/gfs/request_droppoints';
+
+    /**
+     * Request Calender
+     */
+    const CONFIG_REQUEST_CALENDER = 'carriers/gfs/request_calender';
+
+    /**
+     * Request Stores
+     */
+    const CONFIG_REQUEST_STORES = 'carriers/gfs/request_stores';
+
+    /**
+     * Enable Stores
+     */
+    const CONFIG_ENABLE_STORES = 'carriers/gfs/enable_stores';
+
+    /**
      * Default Service
      */
     const CONFIG_DEFAULT_SERVICE = 'carriers/gfs/default_service';
@@ -194,24 +239,29 @@ class Config extends Data
     const CONFIG_SHOW_CALENDAR_NO_SERVICES = 'carriers/gfs/show_calendar_no_services';
 
     /**
+     * Preselect Calendar Service
+     */
+    const CONFIG_PRESELECT_CALENDAR_SERVICE = 'carriers/gfs/preselect_calendar_service';
+
+    /**
      * Calendar No Service Message
      */
     const CONFIG_CALENDAR_NO_SERVICES = 'carriers/gfs/calendar_no_services';
 
     /**
-     * Day Labels
+     * Calendar Day Prompt
      */
-    const CONFIG_DAY_LABELS = 'carriers/gfs/day_labels';
+    const CONFIG_CALENDAR_DAY_PROMPT = 'carriers/gfs/calendar_day_prompt';
+
+    /**
+     * Calendar Day Non Prompt
+     */
+    const CONFIG_CALENDAR_DAY_NON_PROMPT = 'carriers/gfs/calendar_day_non_prompt';
 
     /**
      * Month Labels
      */
     const CONFIG_MONTH_LABELS = 'carriers/gfs/month_labels';
-
-    /**
-     * Disabled Dates
-     */
-    const CONFIG_DISABLED_DATES = 'carriers/gfs/disabled_dates';
 
     /**
      * Disable Prev Days
@@ -299,7 +349,7 @@ class Config extends Data
 
     /**
      * Get Shipping Method Title
-     * 
+     *
      * @return string
      */
     public function getMethodTitle()
@@ -328,25 +378,6 @@ class Config extends Data
     }
 
     /**
-     * Get Enabled Delivery Types
-     *
-     * @return array
-     */
-    public function getDeliveryTypes()
-    {
-        $types = array_filter(explode(',', $this->scopeConfig->getValue(self::CONFIG_DELIVERY_TYPES, ScopeInterface::SCOPE_STORE)));
-        $allowedTypes = [
-            Source\DeliveryTypes::METHOD_STANDARD,
-            Source\DeliveryTypes::METHOD_DROP_POINT,
-            Source\DeliveryTypes::METHOD_STORE
-        ];
-
-        return array_filter($types, function ($key) use ($allowedTypes) {
-            return in_array($key, $allowedTypes);
-        });
-    }
-
-    /**
      * Get Allowed Countries
      *
      * @return array
@@ -361,51 +392,33 @@ class Config extends Data
     }
 
     /**
-     * Get Primary Color
+     * Get Shipping Method Name
      *
      * @return string
      */
-    public function getColorPrimary()
+    public function getOrientation()
     {
-        $hex = $this->scopeConfig->getValue(self::CONFIG_COLOR_PRIMARY, ScopeInterface::SCOPE_STORE);
-        $hex = '#' . ltrim($hex, '#');
-        if (!preg_match('/^#[a-f0-9]{6}$/i', $hex)) {
-            $hex = '#B20000';
+        $orientation = trim($this->scopeConfig->getValue(self::CONFIG_WIDGET_ORIENTATION, ScopeInterface::SCOPE_STORE));
+        if (!$orientation) {
+            $orientation = 'horizontal';
         }
 
-        return $hex;
+        return $orientation;
     }
 
     /**
-     * Get Secondary Color
+     * Get Default Delivery Method
      *
      * @return string
      */
-    public function getColorSecondary()
+    public function getDefaultDeliveryMethod()
     {
-        $hex = $this->scopeConfig->getValue(self::CONFIG_COLOR_SECONDARY, ScopeInterface::SCOPE_STORE);
-        $hex = '#' . ltrim($hex, '#');
-        if (!preg_match('/^#[a-f0-9]{6}$/i', $hex)) {
-            $hex = '#FFFFFF';
+        $default = trim($this->scopeConfig->getValue(self::CONFIG_DELIVERY_DEFAULT_METHOD, ScopeInterface::SCOPE_STORE));
+        if (!$default) {
+            $default = 0;
         }
 
-        return $hex;
-    }
-
-    /**
-     * Get Tertiary Color
-     *
-     * @return string
-     */
-    public function getColorTertiary()
-    {
-        $hex = $this->scopeConfig->getValue(self::CONFIG_COLOR_TERTIARY, ScopeInterface::SCOPE_STORE);
-        $hex = '#' . ltrim($hex, '#');
-        if (!preg_match('/^#[a-f0-9]{6}$/i', $hex)) {
-            $hex = '#000000';
-        }
-
-        return $hex;
+        return $default;
     }
 
     /**
@@ -534,6 +547,51 @@ class Config extends Data
     }
 
     /**
+     * Get Drop List Button Name
+     *
+     * @return string
+     */
+    public function getDropPointListButtonName()
+    {
+        $title = trim($this->scopeConfig->getValue(self::CONFIG_DROP_POINT_LIST_BUTTON_NAME, ScopeInterface::SCOPE_STORE));
+        if (!$title) {
+            $title = __('Select');
+        }
+
+        return $title;
+    }
+
+    /**
+     * Get Drop List Button Name Unselected
+     *
+     * @return string
+     */
+    public function getDropPointListButtonNameUnselected()
+    {
+        $title = trim($this->scopeConfig->getValue(self::CONFIG_DROP_POINT_LIST_BUTTON_NAME_UNSELECTED, ScopeInterface::SCOPE_STORE));
+        if (!$title) {
+            $title = __('Deselect');
+        }
+
+        return $title;
+    }
+
+    /**
+     * Get Drop Point Sort
+     *
+     * @return string
+     */
+    public function getDropPointSort()
+    {
+        $sort = trim($this->scopeConfig->getValue(self::CONFIG_DROP_POINT_SORT, ScopeInterface::SCOPE_STORE));
+        if (!$sort) {
+            $sort = 'carrier';
+        }
+
+        return $sort;
+    }
+
+    /**
      * Get Service Sort Order
      *
      * @return string
@@ -629,6 +687,56 @@ class Config extends Data
     }
 
     /**
+     * Get Request Standard
+     *
+     * @return bool
+     */
+    public function getRequestStandard()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_REQUEST_STANDARD, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Get Request Drop Points
+     *
+     * @return bool
+     */
+    public function getRequestDroppoints()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_REQUEST_DROPPOINTS, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Get Request Calender
+     *
+     * @return bool
+     */
+    public function getRequestCalender()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_REQUEST_CALENDER, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Get Request Stores
+     *
+     * @return bool
+     */
+    public function getRequestStores()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_REQUEST_STORES, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * Get Enable Stores
+     *
+     * @return bool
+     */
+    public function getEnableStores()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_ENABLE_STORES, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Get Default Service
      *
      * @return string
@@ -699,6 +807,16 @@ class Config extends Data
     }
 
     /**
+     * Preselect Calendar Service
+     *
+     * @return bool
+     */
+    public function getPreselectCalendarService()
+    {
+        return (bool) $this->scopeConfig->getValue(self::CONFIG_PRESELECT_CALENDAR_SERVICE, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Calendar No Service Message
      *
      * @return string
@@ -709,146 +827,33 @@ class Config extends Data
     }
 
     /**
-     * Get Day Labels
+     * Calendar Day Prompt
      *
-     * @return array
+     * @return string
      */
-    public function getDayLabels()
+    public function getCalendarDayPrompt()
     {
-        $labels = [
-            'Su' => 'Su',
-            'Mo' => 'Mo',
-            'Tu' => 'Tu',
-            'We' => 'We',
-            'Th' => 'Th',
-            'Fr' => 'Fr',
-            'Sa' => 'Sa',
-        ];
-
-        try {
-            $days = $this->_getDayLabels();
-            if (empty($labels)) {
-                return array_values($labels);
-            }
-            foreach ($days as $key => $value) {
-                if (!isset($labels[$key])) {
-                    continue;
-                }
-                $labels[$key] = $value;
-            }
-        } catch (\InvalidArgumentException $e) {
-            $this->_logger->debug('Issue retrieving day labels. Please resolve.');
-        } catch (\Exception $e) {
-            $this->_logger->debug('Issue retrieving day labels. Please resolve.');
+        $prompt = $this->scopeConfig->getValue(self::CONFIG_CALENDAR_DAY_PROMPT, ScopeInterface::SCOPE_STORE);
+        if (!$prompt) {
+            $prompt = 'Please select a delivery time:';
         }
 
-        return array_values($labels);
+        return $prompt;
     }
 
     /**
-     * Get Day Labels
+     * Calendar Day Non Prompt
      *
-     * @return array
-     *
-     * @throws \Exception
+     * @return string
      */
-    protected function _getDayLabels()
+    public function getCalendarDayNonPrompt()
     {
-        $labels = [];
-        $value = $this->scopeConfig->getValue(self::CONFIG_DAY_LABELS, ScopeInterface::SCOPE_STORE);
-        if (!$value) {
-            throw new \Exception();
-        }
-        $days = $this->_json->unserialize($value);
-        foreach ($days as $day) {
-            if (!$day['day'] || !$day['label']) {
-                continue;
-            }
-            $labels[$day['day']] = $day['label'];
+        $prompt = $this->scopeConfig->getValue(self::CONFIG_CALENDAR_DAY_NON_PROMPT, ScopeInterface::SCOPE_STORE);
+        if (!$prompt) {
+            $prompt = 'No delivery time to select';
         }
 
-        return $labels;
-    }
-
-    /**
-     * Get Month Labels
-     *
-     * @return array
-     */
-    public function getMonthLabels()
-    {
-        $labels = [
-            'January'   => 'January',
-            'February'  => 'February',
-            'March'     => 'March',
-            'April'     => 'April',
-            'May'       => 'May',
-            'June'      => 'May',
-            'July'      => 'July',
-            'August'    => 'August',
-            'September' => 'September',
-            'October'   => 'October',
-            'November'  => 'November',
-            'December'  => 'December',
-        ];
-
-        try {
-            $days = $this->_getMonthLabels();
-            if (empty($labels)) {
-                return array_values($labels);
-            }
-            foreach ($days as $key => $value) {
-                if (!isset($labels[$key])) {
-                    continue;
-                }
-                $labels[$key] = $value;
-            }
-        } catch (\InvalidArgumentException $e) {
-            $this->_logger->debug('Issue retrieving month labels. Please resolve.');
-        } catch (\Exception $e) {
-            $this->_logger->debug('Issue retrieving month labels. Please resolve.');
-        }
-
-        return array_values($labels);
-    }
-
-    /**
-     * Get Day Labels
-     *
-     * @return array
-     *
-     * @throws \Exception
-     */
-    protected function _getMonthLabels()
-    {
-        $labels = [];
-        $value = $this->scopeConfig->getValue(self::CONFIG_MONTH_LABELS, ScopeInterface::SCOPE_STORE);
-        if (!$value) {
-            throw new \Exception();
-        }
-        $months = $this->_json->unserialize($value);
-        foreach ($months as $month) {
-            if (!$month['month'] || !$month['label']) {
-                continue;
-            }
-            $labels[$month['month']] = $month['label'];
-        }
-
-        return $labels;
-    }
-
-    /**
-     * Get Disabled Dates
-     *
-     * @return array
-     */
-    public function getDisabledDates()
-    {
-        $disabledDates = $this->scopeConfig->getValue(self::CONFIG_DISABLED_DATES, ScopeInterface::SCOPE_STORE);
-        $disabledDates = explode(',', $disabledDates);
-        $disabledDates = array_filter($disabledDates);
-
-        return $disabledDates;
+        return $prompt;
     }
 
     /**

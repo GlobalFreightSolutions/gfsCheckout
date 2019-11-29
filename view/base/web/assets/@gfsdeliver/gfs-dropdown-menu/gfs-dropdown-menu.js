@@ -2,10 +2,27 @@ import{PolymerElement,html}from"../../@polymer/polymer/polymer-element.js";impor
             <style include="gfs-dropdown-menu-styles"></style>
 
             <div id="gfsDropdown" class="trigger" on-tap="_toggle">
-                {{label}}
-                <dom-if if="{{icon}}">
+                <dom-if if="{{left}}">
                     <template>
-                        <iron-icon icon="{{icon}}"></iron-icon>
+                        <dom-if if="{{icon}}">
+                            <template>
+                                <iron-icon icon="{{icon}}"></iron-icon>
+                            </template>
+                        </dom-if>
+
+                        {{label}}
+                    </template>
+                </dom-if>
+
+                <dom-if if="{{!left}}">
+                    <template>
+                        {{label}}
+
+                        <dom-if if="{{icon}}">
+                            <template>
+                                <iron-icon icon="{{icon}}"></iron-icon>
+                            </template>
+                        </dom-if>
                     </template>
                 </dom-if>
             </div>
@@ -25,4 +42,4 @@ import{PolymerElement,html}from"../../@polymer/polymer/polymer-element.js";impor
                     </template>
                 </dom-if>
             </gfs-dropdown>
-        `}static get is(){return"gfs-dropdown-menu"}static get properties(){return{label:String,icon:String,expandIcon:{type:Boolean,value:!1},disabled:{type:Boolean,value:!1,notify:!0,reflectToAttribute:!0},opened:{type:Boolean,value:!1,notify:!0,reflectToAttribute:!0},menu:{type:String,value:""},jsonMenu:{type:Object,value:[]}}}ready(){super.ready()}connectedCallback(){super.connectedCallback();this._toggle=this._toggle.bind(this)}_toggle(){this.$.ddBox._toggle()}open(){this.$.ddBox.open()}close(){this.$.ddBox.close()}createMenuItem(){return this.menu.split(" ")}}window.customElements.define(GfsDropDownMenu.is,GfsDropDownMenu);
+        `}static get is(){return"gfs-dropdown-menu"}static get properties(){return{label:String,icon:String,alignIcon:{type:String,value:"left"},expandIcon:{type:Boolean,value:!1},disabled:{type:Boolean,value:!1,notify:!0,reflectToAttribute:!0},opened:{type:Boolean,value:!1,notify:!0,reflectToAttribute:!0},menu:{type:String,value:""},jsonMenu:{type:Object,value:[]}}}ready(){super.ready();this.left="left"===this.alignIcon}connectedCallback(){super.connectedCallback();this._toggle=this._toggle.bind(this)}_toggle(){this.$.ddBox._toggle()}open(){this.$.ddBox.open()}close(){this.$.ddBox.close()}createMenuItem(){return this.menu.split(" ")}}window.customElements.define(GfsDropDownMenu.is,GfsDropDownMenu);

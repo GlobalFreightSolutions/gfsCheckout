@@ -1,7 +1,6 @@
 {
   "name" : "justshout/magento2-gfs",
   "description" : "Magento 2 GFS Checkout service module",
-  "license": "Apache-2.0",
   "require" : {
     "php" : "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
     "magento/framework" : "100.0.*|100.1.*|101.0.*|102.0.*",
@@ -10,7 +9,7 @@
   "authors": [
     {
       "name": "Global Freight Solutions",
-      "homepage": "https://gfsdeliver.com/",
+      "website": "https://gfsdeliver.com/",
       "role": "Developer"
     }
   ],

@@ -18,14 +18,14 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="retailer_id" translate="label comment" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Retailer ID</label>
+                    <label>Client ID</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                     <depends>
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
                 <field id="retailer_secret" translate="label comment" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Retailer Secret</label>
+                    <label>Client Secret</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                     <depends>
                         <field id="carriers/gfs/active">1</field>
@@ -34,7 +34,7 @@
                 <field id="connect" translate="label comment" type="button" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Test Connection</label>
                     <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\Connect</frontend_model>
-                    <comment>Use This button to test your connection. Please ensure that you have saved your Retailer ID and Retailer Secret before testing yor connection.</comment>
+                    <comment>Use This button to test your connection. Please ensure that you have saved your Client ID and Client Secret before testing your connection.</comment>
                     <depends>
                         <field id="carriers/gfs/active">1</field>
                     </depends>
@@ -53,14 +53,6 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
-                <field id="delivery_types" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Delivery Types</label>
-                    <source_model>JustShout\Gfs\Model\Config\Source\DeliveryTypes</source_model>
-                    <can_be_empty>1</can_be_empty>
-                    <depends>
-                        <field id="carriers/gfs/active">1</field>
-                    </depends>
-                </field>
                 <field id="allowed_countries" translate="label" type="multiselect" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Ship to Allowed Countries</label>
                     <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
@@ -69,27 +61,22 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
-<!--                <field id="color_primary" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">-->
-<!--                    <label>Primary Colour</label>-->
-<!--                    <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\Colour</frontend_model>-->
-<!--                    <depends>-->
-<!--                        <field id="carriers/gfs/active">1</field>-->
-<!--                    </depends>-->
-<!--                </field>-->
-<!--                <field id="color_secondary" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">-->
-<!--                    <label>Secondary Colour</label>-->
-<!--                    <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\Colour</frontend_model>-->
-<!--                    <depends>-->
-<!--                        <field id="carriers/gfs/active">1</field>-->
-<!--                    </depends>-->
-<!--                </field>-->
-<!--                <field id="color_tertiary" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">-->
-<!--                    <label>Tertiary Colour</label>-->
-<!--                    <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\Colour</frontend_model>-->
-<!--                    <depends>-->
-<!--                        <field id="carriers/gfs/active">1</field>-->
-<!--                    </depends>-->
-<!--                </field>-->
+
+                <field id="orientation" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Widget Orientation</label>
+                    <source_model>JustShout\Gfs\Model\Config\Source\Orientation</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="default_delivery_method" translate="label" type="select" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Delivery Method</label>
+                    <source_model>JustShout\Gfs\Model\Config\Source\DeliveryMethods</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+
                 <field id="custom_fields_customer" translate="label comment" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Custom Fields - Customer</label>
                     <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\CustomFieldsCustomers</frontend_model>
@@ -176,6 +163,29 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
+                <field id="drop_point_list_button_name" translate="label comment" type="text" sortOrder="221" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Drop Point List Button Name</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="drop_point_list_button_name_unselected" translate="label comment" type="text" sortOrder="223" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Drop Point List Button Name Unselected</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="drop_point_sort" translate="label" type="select" sortOrder="224" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Sort Droppoints By carrier/distance]]></label>
+                    <comment><![CDATA[Sort by carrier name or distance.]]></comment>
+                    <source_model>JustShout\Gfs\Model\Config\Source\DroppointSort</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
                 <field id="service_sort_order" translate="label" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Service Sort Order</label>
                     <comment><![CDATA[Sorting the services based on: cheapestFirst, fastestFirst, expensiveFirst, slowestFirst. Default is cheapestFirst.]]></comment>
@@ -236,7 +246,7 @@
                 </field>
                 <field id="use_stores" translate="label" type="select" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Use Stores</label>
-                    <comment><![CDATA[Provide the available stores in Collect Your Order]]></comment>
+                    <comment><![CDATA[Provide the available stores in Collect Your Order.]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="carriers/gfs/active">1</field>
@@ -250,6 +260,52 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
+                <field id="request_standard" translate="label" type="select" sortOrder="291" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Request Standard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="request_droppoints" translate="label" type="select" sortOrder="292" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Request Drop Points</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="request_calender" translate="label" type="select" sortOrder="293" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Request Calender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="request_stores" translate="label" type="select" sortOrder="294" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Request Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="enable_stores" translate="label" type="select" sortOrder="295" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                        <field id="carriers/gfs/request_stores">1</field>
+                    </depends>
+                </field>
+
+                <field id="header_default_service" translate="label" sortOrder="299" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Default Services</label>
+                    <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\Header</frontend_model>
+                    <attribute type="shared">1</attribute>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+
                 <field id="default_service" translate="label comment" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Default Service</label>
                     <comment><![CDATA[The name of the default service to be offered to the customer in the event that the widget cannot contact the GFS Checkout servers.]]></comment>
@@ -292,6 +348,7 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
+
                 <field id="show_calendar_no_services" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show Calendar No Services</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -308,7 +365,28 @@
                         <field id="carriers/gfs/show_calendar_no_services">1</field>
                     </depends>
                 </field>
-                <field id="day_labels" translate="label comment" sortOrder="380" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="calendar_day_prompt" translate="label comment" type="text" sortOrder="371" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Calendar Day Prompt</label>
+                    <comment><![CDATA[Sub-heading text displayed under the calendar control, before the services. Defaults to ''Please select a delivery time:'.]]></comment>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="calendar_day_non_prompt" translate="label comment" type="text" sortOrder="372" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Calendar Day Non Prompt</label>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+                <field id="preselect_calendar_service" translate="label" type="select" sortOrder="373" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Preselect Calendar Service</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
+
+                <!--<field id="day_labels" translate="label comment" sortOrder="380" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Day Labels</label>
                     <frontend_model>JustShout\Gfs\Block\Adminhtml\System\Config\DayLabels</frontend_model>
                     <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
@@ -338,7 +416,7 @@
                     <depends>
                         <field id="carriers/gfs/active">1</field>
                     </depends>
-                </field>
+                </field>-->
                 <field id="disable_prev_days" translate="label" type="select" sortOrder="410" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Disabled Previous Days</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

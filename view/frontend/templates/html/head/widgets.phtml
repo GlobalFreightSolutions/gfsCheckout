@@ -5,10 +5,14 @@
     var gfsData = {
         'accessToken': '<?= $block->getAccessToken() ?>',
         'currency_symbol': '<?= $block->getCurrencySymbol() ?>',
-        'delivery_types': '<?= $block->getDeliveryTypes() ?>',
+        'orientation': '<?= $block->getOrientation() ?>',
+        'default_delivery_method': '<?= $block->getDefaultDeliveryMethod() ?>',
         'standard_delivery_title': '<?= $block->getStandardDeliveryTitle() ?>',
         'calendar_delivery_title': '<?= $block->getCalendarDeliveryTitle() ?>',
         'drop_point_title': '<?= $block->getDropPointTitle() ?>',
+        'drop_point_list_button_name': '<?= $block->getDropPointListButtonName() ?>',
+        'drop_point_list_button_name_unselected': '<?= $block->getDropPointListButtonNameUnselected() ?>',
+        'drop_point_sort': '<?= $block->getDropPointSort() ?>',
         'service_sort_order': '<?= $block->getServiceSortOrder() ?>',
         'home_icon': '<?= $block->getMapHomeIcon() ?>',
         'use_standard': '<?= $block->getUseStandard() ?>',
@@ -21,9 +25,8 @@
         'default_max_delivery_time': '<?= $block->getDefaultMaxDeliveryTime() ?>',
         'show_calendar_no_services': '<?= $block->getShowCalendarNoService() ?>',
         'calendar_no_services': '<?= $block->getCalendarNoService() ?>',
-        'day_labels': '<?= $block->getDayLabels() ?>',
-        'month_labels': '<?= $block->getMonthLabels() ?>',
-        'disabled_dates': '<?= $block->getDisabledDates() ?>',
+        'calendar_day_prompt': '<?= $block->getCalendarDayPrompt() ?>',
+        'calendar_day_non_prompt': '<?= $block->getCalendarDayNonPrompt() ?>',
         'disable_prev_days': '<?= $block->getDisabledPrevDays() ?>',
         'disable_next_days': '<?= $block->getDisabledNextDays() ?>'
     };
@@ -39,6 +42,11 @@
             <?php if ($block->getUseCalendar()): ?>use-calendar<?php endif; ?>
             <?php if ($block->getUseStores()): ?>use-droppoints<?php endif; ?>
             <?php if ($block->getUseDropPointStores()): ?>use-droppoints-stores<?php endif; ?>
+            <?php if ($block->getRequestStandard()): ?>inc-std<?php endif; ?>
+            <?php if ($block->getRequestDroppoints()): ?>inc-drop-point<?php endif; ?>
+            <?php if ($block->getRequestCalender()): ?>inc-day-def<?php endif; ?>
+            <?php if ($block->getRequestStores()): ?>inc-stores<?php endif; ?>
+            <?php if ($block->getEnableStores()): ?>enable-stores<?php endif; ?>
             sessionid="sessionID"
             checkout-results="checkoutResult"
             checkout-data="checkoutData"
@@ -46,10 +54,14 @@
             checkout-request="<%- data.gfs_data %>"
             initial-address="<%- data.initial_address %>"
             currency-symbol="<%- data.currency_symbol %>"
-            delivery-types="<%- data.delivery_types %>"
+            default-delivery-method="<%- data.default_delivery_method %>"
+            orientation="<%- data.orientation %>"
+            droppoint-sort-list="<%- data.drop_point_sort %>"
             standard-delivery-title="<%- data.standard_delivery_title %>"
             calendar-delivery-title="<%- data.calendar_delivery_title %>"
             drop-point-title="<%- data.drop_point_title %>"
+            display-button-text="<%- data.drop_point_list_button_name %>"
+            display-button-deselected-text="<%- data.drop_point_list_button_name_unselected %>"
             service-sort-order="<%- data.service_sort_order %>"
             <?php if ($block->getMapHomeIcon()): ?>home-icon="<%- data.home_icon %>"<?php endif; ?>
             use-standard="<%- data.use_standard %>"
@@ -57,14 +69,14 @@
             default-service="<%- data.default_service %>"
             default-carrier="<%- data.default_carrier %>"
             default-carrier-code="<%- data.default_carrier_code %>"
-            default-price="<%- data.default_price %>"
+            default-price='[<%- data.default_price %>]'
             default-min-delivery-time="<%- data.default_min_delivery_time %>"
             default-max-delivery-time="<%- data.default_max_delivery_time %>"
             show-calendar-no-services="<%- data.show_calendar_no_services %>"
             calendar-no-services="<%- data.calendar_no_services %>"
-            day-labels='<%- data.day_labels %>'
-            month-labels='<%- data.month_labels %>'
-            disabled-dates='<%- data.disabled_dates %>'
+            calendar-day-prompt="<%- data.calendar_day_prompt %>"
+            calendar-day-non-prompt="<%- data.calendar_day_non_prompt %>"
+            <?php if ($block->getPreselectCalendarService()): ?>allow-calendar-preselect<?php endif; ?>
             disable-prev-days="<%- data.disable_prev_days %>"
             disable-next-days="<%- data.disable_next_days %>">
     </gfs-checkout>

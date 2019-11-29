@@ -88,13 +88,23 @@ class Head extends Template
     }
 
     /**
-     * Get Enabled Delivery Types
+     * Get Widget Orientation
      *
      * @return string
      */
-    public function getDeliveryTypes()
+    public function getOrientation()
     {
-        return implode(',', $this->_config->getDeliveryTypes());
+        return $this->_config->getOrientation();
+    }
+
+    /**
+     * Get Default Delivery Method
+     *
+     * @return string
+     */
+    public function getDefaultDeliveryMethod()
+    {
+        return $this->_config->getDefaultDeliveryMethod();
     }
 
     /**
@@ -125,6 +135,36 @@ class Head extends Template
     public function getDropPointTitle()
     {
         return $this->_config->getDropPointTitle();
+    }
+
+    /**
+     * Get Drop List Button Name
+     *
+     * @return string
+     */
+    public function getDropPointListButtonName()
+    {
+        return $this->_config->getDropPointListButtonName();
+    }
+
+    /**
+     * Get Drop List Button Name Unselected
+     *
+     * @return string
+     */
+    public function getDropPointListButtonNameUnselected()
+    {
+        return $this->_config->getDropPointListButtonNameUnselected();
+    }
+
+    /**
+     * Get Drop Point Sort
+     *
+     * @return string
+     */
+    public function getDropPointSort()
+    {
+        return $this->_config->getDropPointSort();
     }
 
     /**
@@ -208,6 +248,56 @@ class Head extends Template
     }
 
     /**
+     * Get Request Standard
+     *
+     * @return bool
+     */
+    public function getRequestStandard()
+    {
+        return $this->_config->getRequestStandard();
+    }
+
+    /**
+     * Get Request Standard
+     *
+     * @return bool
+     */
+    public function getRequestDroppoints()
+    {
+        return $this->_config->getRequestDroppoints();
+    }
+
+    /**
+     * Get Request Calender
+     *
+     * @return bool
+     */
+    public function getRequestCalender()
+    {
+        return $this->_config->getRequestCalender();
+    }
+
+    /**
+     * Get Request Stores
+     *
+     * @return bool
+     */
+    public function getRequestStores()
+    {
+        return $this->_config->getRequestStores();
+    }
+
+    /**
+     * Get Enable Stores
+     *
+     * @return bool
+     */
+    public function getEnableStores()
+    {
+        return $this->_config->getEnableStores();
+    }
+
+    /**
      * Get Default Service
      *
      * @return string
@@ -274,36 +364,6 @@ class Head extends Template
     }
 
     /**
-     * Get Primary Colour
-     *
-     * @return string
-     */
-    public function getColorPrimary()
-    {
-        return $this->_config->getColorPrimary();
-    }
-
-    /**
-     * Get Secondary Colour
-     *
-     * @return string
-     */
-    public function getColorSecondary()
-    {
-        return $this->_config->getColorSecondary();
-    }
-
-    /**
-     * Get Primary Colour
-     *
-     * @return string
-     */
-    public function getColorTertiary()
-    {
-        return $this->_config->getColorTertiary();
-    }
-
-    /**
      * Show Calendar No Service
      *
      * @return string
@@ -311,6 +371,16 @@ class Head extends Template
     public function getShowCalendarNoService()
     {
         return $this->_config->getShowCalendarNoService() ? 'true' : 'false';
+    }
+
+    /**
+     * Get Preselect Calendar Select
+     *
+     * @return string
+     */
+    public function getPreselectCalendarService()
+    {
+        return $this->_config->getPreselectCalendarService();
     }
 
     /**
@@ -324,41 +394,23 @@ class Head extends Template
     }
 
     /**
-     * Get Day Labels
+     * Calendar Day Prompt
      *
      * @return string
      */
-    public function getDayLabels()
+    public function getCalendarDayPrompt()
     {
-        $labels = $this->_config->getDayLabels();
-
-        return '[' . implode(',', array_map(function($string) {
-            return '"' . $string . '"';
-        }, $labels)) . ']';
+        return $this->_config->getCalendarDayPrompt();
     }
 
     /**
-     * Get Month Labels
+     * Calendar Day Non Prompt
      *
      * @return string
      */
-    public function getMonthLabels()
+    public function getCalendarDayNonPrompt()
     {
-        $labels = $this->_config->getMonthLabels();
-
-        return '[' . implode(',', array_map(function($string) {
-            return '"' . $string . '"';
-        }, $labels)) . ']';
-    }
-
-    /**
-     * Get Disabled Dates
-     *
-     * @return string
-     */
-    public function getDisabledDates()
-    {
-        return '[' . implode(',', $this->_config->getDisabledDates()) . ']';
+        return $this->_config->getCalendarDayNonPrompt();
     }
 
     /**

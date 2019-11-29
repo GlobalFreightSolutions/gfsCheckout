@@ -14,6 +14,8 @@
                 <standard_delivery_title><![CDATA[Standard Delivery]]></standard_delivery_title>
                 <calendar_delivery_title><![CDATA[Choose a delivery date and time]]></calendar_delivery_title>
                 <drop_point_title><![CDATA[Collect your order]]></drop_point_title>
+                <drop_point_list_button_name><![CDATA[Select]]></drop_point_list_button_name>
+                <drop_point_list_button_name_unselected><![CDATA[Deselect]]></drop_point_list_button_name_unselected>
                 <service_sort_order>cheapestFirst</service_sort_order>
                 <date_range>14</date_range>
                 <use_standard>1</use_standard>
@@ -21,6 +23,11 @@
                 <use_calendar>1</use_calendar>
                 <use_stores>1</use_stores>
                 <use_droppoints_stores>1</use_droppoints_stores>
+                <request_standard>1</request_standard>
+                <request_droppoints>1</request_droppoints>
+                <request_calender>1</request_calender>
+                <request_stores>1</request_stores>
+                <enable_stores>1</enable_stores>
                 <default_service>Standard</default_service>
                 <default_carrier>YODEL</default_carrier>
                 <default_carrier_code>ECO</default_carrier_code>
@@ -31,7 +38,9 @@
                 <color_secondary><![CDATA[#FFFFFF]]]></color_secondary>
                 <color_tertiary><![CDATA[#000000]]]></color_tertiary>
                 <show_calendar_no_services>0</show_calendar_no_services>
-                <calendar_no_services><![CDATA[There are no services available on this day]]]></calendar_no_services>
+                <calendar_no_services><![CDATA[There are no services available on this day]]></calendar_no_services>
+                <calendar_day_prompt><![CDATA[Please select a delivery time:]]></calendar_day_prompt>
+                <calendar_day_non_prompt><![CDATA[No delivery time to select:]]></calendar_day_non_prompt>
                 <disable_prev_days>0</disable_prev_days>
                 <disable_next_days>0</disable_next_days>
             </gfs>

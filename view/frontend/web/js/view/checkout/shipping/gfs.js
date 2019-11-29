@@ -8,6 +8,7 @@ define([
     'Magento_Checkout/js/model/shipping-rate-registry',
     'mage/template',
     'mage/storage',
+    'mage/cookies',
     'gfsAsync!https://maps.googleapis.com/maps/api/js?key=' + gfsGoogleMapsApiKey + '&libraries=places'
 ], function (
     $,
@@ -47,7 +48,7 @@ define([
 
                 if (window.gfsData.currentPostcode !== address.postcode) {
                     self.removeGfsCheckoutComponent();
-                    self.addGfsCheckoutComponent();
+                    self.addGfsCheckoutComponent(address);
                     window.gfsData.currentPostcode = address.postcode;
                 }
             });
@@ -72,9 +73,13 @@ define([
          *
          * @return void
          */
-        addGfsCheckoutComponent: function ()
+        addGfsCheckoutComponent: function (address = null)
         {
             var self = this;
+            if (address) {
+                $.cookie('gfs_address', JSON.stringify(address));
+            }
+
             $('#checkout-step-shipping_method .table-checkout-shipping-method').hide();
             this.removeGfsCheckoutComponent();
             this.triggerProcessStart();
@@ -119,7 +124,6 @@ define([
                 data: {
                     'access_token': window.gfsData.accessToken,
                     'currency_symbol': window.gfsData.currency_symbol,
-                    'delivery_types': window.gfsData.delivery_types,
                     'standard_delivery_title': window.gfsData.standard_delivery_title,
                     'calendar_delivery_title': window.gfsData.calendar_delivery_title,
                     'drop_point_title': window.gfsData.drop_point_title,
@@ -136,11 +140,17 @@ define([
                     'default_max_delivery_time': window.gfsData.default_max_delivery_time,
                     'show_calendar_no_services': window.gfsData.show_calendar_no_services,
                     'calendar_no_services': window.gfsData.calendar_no_services,
-                    'day_labels': window.gfsData.day_labels,
-                    'month_labels': window.gfsData.month_labels,
-                    'disabled_dates': window.gfsData.disabled_dates,
                     'disable_prev_days': window.gfsData.disable_prev_days,
                     'disable_next_days': window.gfsData.disable_next_days,
+
+                    'orientation': window.gfsData.orientation,
+                    'default_delivery_method': window.gfsData.default_delivery_method,
+                    'calendar_day_prompt': window.gfsData.calendar_day_prompt,
+                    'calendar_day_non_prompt': window.gfsData.calendar_day_non_prompt,
+                    'drop_point_list_button_name': window.gfsData.drop_point_list_button_name,
+                    'drop_point_list_button_name_unselected': window.gfsData.drop_point_list_button_name_unselected,
+                    'drop_point_sort': window.gfsData.drop_point_sort,
+
                     'gfs_data': gfsData,
                     'initial_address': initialAddress
                 }
