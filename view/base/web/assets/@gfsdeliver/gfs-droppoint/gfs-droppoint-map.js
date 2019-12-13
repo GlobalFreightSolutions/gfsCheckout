@@ -72,7 +72,11 @@ import{PolymerElement,html}from"../../@polymer/polymer/polymer-element.js";impor
                         </div>
                     </div>
 
-                    <gfs-button class="default choose-droppoint map-btn" on-click="_getOpeningHours">View Opening Times</gfs-button>
+                    <dom-if if="{{showOpeningHours}}">
+                        <template>
+                            <gfs-button class="default choose-droppoint map-btn" on-click="_getOpeningHours">View Opening Times</gfs-button>
+                        </template>
+                    </dom-if>
 
                     <div class="weekCollection">
                         <template is="dom-repeat" items="{{_weekCollection}}">

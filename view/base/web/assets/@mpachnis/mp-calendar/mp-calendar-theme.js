@@ -1,4 +1,4 @@
-const MpCalendarStyle=document.createElement("template");MpCalendarStyle.innerHTML=`<dom-module id="mp-calendar-theme">
+const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttribute("style","display: none;");MpCalendarStyle.innerHTML=`<dom-module id="mp-calendar-theme">
     <template>
         <style>
             :host {
@@ -106,7 +106,7 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.innerHT
                 display: flex;
             }
 
-            #montSelection, #yearSelection {
+            #monthSelection, #yearSelection {
                 background: none;
                 border: none;
                 color: #757575;
@@ -124,7 +124,7 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.innerHT
                 -webkit-appearance: none;
             }
 
-                #montSelection option, #yearSelection option {
+                #monthSelection option, #yearSelection option {
                     direction: ltr;
                 }
 
@@ -318,7 +318,7 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.innerHT
             .mp-cld-day.currMonth.selected,
             .mp-cld-day.nextMonth.selected {
                 background: var(--selected-day-bg) !important;
-                color: var(--white-color) !important;
+                color: var(--white-color);
                 position: relative;
                 cursor: pointer;
                 z-index: 5;

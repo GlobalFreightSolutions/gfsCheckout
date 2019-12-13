@@ -36,8 +36,8 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                     --next-days-color: #fff;
                     --disabled-color: rgba(255, 255, 255, .3);
                     --disabled-text-shadow: 0 0 2px rgba(255, 255, 255, .35);
-                    --selected-day-bg: var(--selected-day-bg);
                     --today-boxshadow-color: #f33127;
+                    --calendar-hight-lighted-bg: #828181;
                     --selected-day-hover-bg: rgba(255, 13, 0, .5);
                     --selected-service-bg-hover: rgba(248, 248, 248, .65);
                     --ease-in-out: .3s all ease-in-out;
@@ -55,6 +55,8 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                     --gfs-dropdown-menu-border-radius: 3px 3px 0 0;
                     --gfs-dropdown-item-hover: #e2e0e0;
                     --font-size: 14px;
+
+                    --cld-selected-day-bg: #006df0;
 
                     --paper-tabs-selection-bar: {
                         border-color: var(--paper-tabs-selection-bar);
@@ -269,7 +271,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                             content: '';
                             width: 20px;
                             height: 20px;
-                            background: #828181;
+                            background: var(--calendar-hight-lighted-bg);
                             position: absolute;
                             top: -3px;
                             left: -30px;
@@ -281,7 +283,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
 
                         .unavailable-service::before {
                             background: #fff;
-                            border: var(--border-right-width) solid var(--border-color);
+                            border: var(--border-width) solid var(--border-color);
                         }
 
                         .selected-service {
@@ -289,8 +291,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                         }
 
                             .selected-service::before {
-                                background: var(--selected-day-bg);
-                                /*box-shadow: inset 0 -5px 0 0 var(--gfs-blue-color);*/
+                                background: var(--cld-selected-day-bg);
                             }
 
                     paper-radio-group {
@@ -361,17 +362,9 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
 
                         --border-radius: 0;
                         --border-radius-header: 0;
+                        --selected-day-bg: var(--cld-selected-day-bg);
                     }
 
-                    // mp-calendar #content {
-                    //     background: var(--has-service-bg);
-                    //     color: var(--has-service-color);
-                    // }
-
-                    mp-calendar .mp-cld-day.has-service {
-                        background: var(--has-service-bg);
-                        color: var(--has-service-color);
-                    }
 
                     #toggleDropPointsViewControls, .storeHeader, #toggleStoresViewControls {
                         display: flex;
@@ -385,6 +378,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                     .toggle-label {
                         font-size: 17px;
                         font-weight: 500;
+                        line-height: 24px;
                         margin-right: 0.4em;
                         display: flex;
                     }

@@ -122,7 +122,7 @@ const GfsDropPointStyle=document.createElement("template");GfsDropPointStyle.inn
             }
 
             .dd-action {
-                margin: auto 10px 0 auto;
+                margin: 10px 10px 0 auto;
                 /*position: absolute;
                 right: 15px;
                 bottom: 15px;*/
