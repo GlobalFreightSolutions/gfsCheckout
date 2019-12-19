@@ -483,20 +483,15 @@ class Data
             if (!$attributeCode) {
                 continue;
             }
-            $type = isset($field['type']) ? $field['type'] : 'String';
-            $fieldName = $this->_getItemFieldName($type, $fieldNumber);
-            $value = $this->_getProductAttributeValue(
-                (int) $item->getProduct()->getId(),
-                $attributeCode,
-                $type
-            );
+            $name = isset($field['type']) ? $field['type'] : 'field_' . $fieldNumber;
+            $value = $this->_getProductAttributeValue((int) $item->getProduct()->getId(), $attributeCode);
 
             if (!$value && $value !== 0) {
                 continue;
             }
 
             $fields[] = [
-                'name'  => $fieldName,
+                'name'  => $name,
                 'value' => $value
             ];
 
@@ -504,19 +499,6 @@ class Data
         }
 
         return $fields;
-    }
-
-    /**
-     * Get item field name
-     *
-     * @param string $type
-     * @param int    $number
-     *
-     * @return string
-     */
-    protected function _getItemFieldName($type, $number)
-    {
-        return 'CUSTOM_ORDER_ITEM_' . strtoupper($type) . '_' . $number;
     }
 
     /**
@@ -528,7 +510,7 @@ class Data
      *
      * @return float|int|null|string
      */
-    protected function _getProductAttributeValue($productId, $attributeCode, $type)
+    protected function _getProductAttributeValue($productId, $attributeCode, $type = '')
     {
         try {
             /** @var Product $productModel */
@@ -590,16 +572,15 @@ class Data
             if (!$attributeCode) {
                 continue;
             }
-            $type = isset($field['type']) ? $field['type'] : 'String';
-            $fieldName = $this->_getCustomerFieldName($type, $fieldNumber);
-            $value = $this->_getCustomerAttributeValue($customer, $attributeCode, $type);
+            $name = isset($field['type']) ? $field['type'] : 'field_' . $fieldNumber;
+            $value = $this->_getCustomerAttributeValue($customer, $attributeCode);
 
             if (!$value && $value !== 0) {
                 continue;
             }
 
             $fields[] = [
-                'name'  => $fieldName,
+                'name'  => $name,
                 'value' => $value
             ];
 
@@ -607,19 +588,6 @@ class Data
         }
 
         return $fields;
-    }
-
-    /**
-     * Get customer file name
-     *
-     * @param string $type
-     * @param int    $number
-     *
-     * @return string
-     */
-    protected function _getCustomerFieldName($type, $number)
-    {
-        return 'CUSTOM_ORDER_' . strtoupper($type) . '_' . $number;
     }
 
     /**
@@ -631,7 +599,7 @@ class Data
      *
      * @return float|int|null|string
      */
-    protected function _getCustomerAttributeValue($customer, $attributeCode, $type)
+    protected function _getCustomerAttributeValue($customer, $attributeCode, $type = '')
     {
         try {
             $attributeCodeSegments = explode(':', $attributeCode);

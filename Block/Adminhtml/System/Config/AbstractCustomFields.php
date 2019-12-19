@@ -41,7 +41,7 @@ abstract class AbstractCustomFields extends AbstractFieldArray
      *
      * @var int
      */
-    protected $_maxRows = 3;
+    protected $_maxRows = 10;
 
     /**
      * Get Custom Fields Available
@@ -60,7 +60,6 @@ abstract class AbstractCustomFields extends AbstractFieldArray
     {
         $this->addColumn('type', [
             'label'    => __('Type'),
-            'renderer' => $this->_getTypeRenderer()
         ]);
 
         $this->addColumn('value', [
@@ -70,24 +69,6 @@ abstract class AbstractCustomFields extends AbstractFieldArray
 
         $this->_addAfter = false;
         $this->_addButtonLabel = __('Add Custom Field');
-    }
-
-    /**
-     * Get Custom Field Type Dropdown
-     *
-     * @return CustomFields\Type|BlockInterface
-     */
-    protected function _getTypeRenderer()
-    {
-        if (!$this->_typeRenderer) {
-            $this->_typeRenderer = $this->getLayout()->createBlock(CustomFields\Type::class, null, [
-                'data' => [
-                    'is_render_to_js_template' => true
-                ]
-            ]);
-        }
-
-        return $this->_typeRenderer;
     }
 
     /**
@@ -107,8 +88,8 @@ abstract class AbstractCustomFields extends AbstractFieldArray
     protected function _prepareArrayRow(DataObject $row)
     {
         $options = [];
-        $typeKey = 'option_' . $this->_getTypeRenderer()->calcOptionHash($row->getData('type'));
-        $options[$typeKey] = 'selected="selected"';
+//        $typeKey = 'option_' . $this->_getTypeRenderer()->calcOptionHash($row->getData('type'));
+//        $options[$typeKey] = 'selected="selected"';
         $valueKey = 'option_' . $this->_getValueRenderer()->calcOptionHash($row->getData('value'));
         $options[$valueKey] = 'selected="selected"';
         $row->setData('option_extra_attrs', $options);

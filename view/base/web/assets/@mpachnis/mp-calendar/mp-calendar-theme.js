@@ -1,4 +1,4 @@
-const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttribute("style","display: none;");MpCalendarStyle.innerHTML=`<dom-module id="mp-calendar-theme">
+const mpCalendarTheme=document.createElement("template");mpCalendarTheme.setAttribute("style","display: none;");mpCalendarTheme.innerHTML=`<dom-module id="mp-calendar-theme">
     <template>
         <style>
             :host {
@@ -43,7 +43,6 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttr
                 --selected-day-hover-bg: rgba(0, 109, 240, .8);
 
                 --border-radius: 4px;
-                --border-radius-header: 4px 4px 0 0;
 
                 --layout: {
                     display: flex;
@@ -77,7 +76,7 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttr
 
             #content {
                 width: 100%;
-                margin: 0;
+                margin: 20px 0;
                 background: var(--main-bg);
                 border: var(--border-width) solid var(--border-color);
                 border-radius: var(--border-radius);
@@ -97,34 +96,30 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttr
                 color: var(--main-header-color);
                 background: var(--header-bg);
                 padding: 7px 0;
-                border-radius: var(--border-radius-header);
+                border-radius: 4px 4px 0 0;
             }
 
             /* month selection */
-
-            #currentMonth {
-                display: flex;
-            }
-
-            #monthSelection, #yearSelection {
+            #montSelection, #yearSelection {
+                overflow: hidden;
                 background: none;
                 border: none;
-                color: #757575;
-                text-align: right;
+                color: var(--header-icon-bg);
+                font-size: 17px;
+                font-family: "Helvetica Neue";
+                font-weight: bold;
                 text-align-last: right;
-                direction: rtl;
-                padding: 5px;
                 cursor: pointer;
                 position: relative;
-                overflow: hidden;
                 outline: 0;
                 appearance: none;
                 -ms-appearance: none;
                 -moz-appearance: none;
                 -webkit-appearance: none;
+
             }
 
-                #monthSelection option, #yearSelection option {
+                #montSelection option, #yearSelection option {
                     direction: ltr;
                 }
 
@@ -151,10 +146,6 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttr
 
             .calendar-icon-left { margin: 0 0 0 5px }
             .calendar-icon-right { margin: 0 5px 0 0 }
-
-            .currentMonthDate {
-                display: flex;
-            }
 
             .currentMonthDate, .todayDate {
                 vertical-align: middle;
@@ -571,4 +562,4 @@ const MpCalendarStyle=document.createElement("template");MpCalendarStyle.setAttr
                 }
         </style>
     </template>
-</dom-module>`;document.head.appendChild(MpCalendarStyle.content);
+</dom-module>`;document.head.appendChild(mpCalendarTheme.content);

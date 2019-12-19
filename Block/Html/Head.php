@@ -198,6 +198,16 @@ class Head extends Template
     }
 
     /**
+     * Get Map Store Icon
+     *
+     * @return string
+     */
+    public function getMapStoreIcon()
+    {
+        return $this->_config->getMapStoreIcon();
+    }
+
+    /**
      * Get Use Stores
      *
      * @return bool

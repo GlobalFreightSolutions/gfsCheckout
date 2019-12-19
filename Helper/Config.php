@@ -154,6 +154,11 @@ class Config extends Data
     const CONFIG_MAP_HOME_ICON = 'carriers/gfs/map_home_icon';
 
     /**
+     * Get Map Store Icon
+     */
+    const CONFIG_MAP_STORE_ICON = 'carriers/gfs/map_store_icon';
+
+    /**
      * Get Use Stores
      */
     const CONFIG_USE_STORES = 'carriers/gfs/use_stores';
@@ -629,6 +634,21 @@ class Config extends Data
     public function getMapHomeIcon()
     {
         $icon = $this->scopeConfig->getValue(self::CONFIG_MAP_HOME_ICON, ScopeInterface::SCOPE_STORE);
+        if (!$icon) {
+            return null;
+        }
+
+        return $this->_urlBuilder->getBaseUrl(['_type' => 'media']) . 'gfs/map/icons/' . $icon;
+    }
+
+    /**
+     * Get Map Store Icon
+     *
+     * @return string|null
+     */
+    public function getMapStoreIcon()
+    {
+        $icon = $this->scopeConfig->getValue(self::CONFIG_MAP_STORE_ICON, ScopeInterface::SCOPE_STORE);
         if (!$icon) {
             return null;
         }

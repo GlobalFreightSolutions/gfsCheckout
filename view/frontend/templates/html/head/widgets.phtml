@@ -15,6 +15,7 @@
         'drop_point_sort': '<?= $block->getDropPointSort() ?>',
         'service_sort_order': '<?= $block->getServiceSortOrder() ?>',
         'home_icon': '<?= $block->getMapHomeIcon() ?>',
+        'store_icon': '<?= $block->getMapStoreIcon() ?>',
         'use_standard': '<?= $block->getUseStandard() ?>',
         'use_drop_points': '<?= $block->getUseDropPoints() ?>',
         'default_service': '<?= $block->getDefaultService() ?>',
@@ -38,10 +39,8 @@
     <input type="hidden" name="sessionID" id="sessionID"/>
     <input type="hidden" name="checkoutData" id="checkoutData"/>
     <gfs-checkout
-            use-standard
             <?php if ($block->getUseCalendar()): ?>use-calendar<?php endif; ?>
-            <?php if ($block->getUseStores()): ?>use-droppoints<?php endif; ?>
-            <?php if ($block->getUseDropPointStores()): ?>use-droppoints-stores<?php endif; ?>
+            <?php if ($block->getUseDropPointStores()): ?>use-droppoints use-droppoints-stores<?php endif; ?>
             <?php if ($block->getRequestStandard()): ?>inc-std<?php endif; ?>
             <?php if ($block->getRequestDroppoints()): ?>inc-drop-point<?php endif; ?>
             <?php if ($block->getRequestCalender()): ?>inc-day-def<?php endif; ?>
@@ -64,6 +63,7 @@
             display-button-deselected-text="<%- data.drop_point_list_button_name_unselected %>"
             service-sort-order="<%- data.service_sort_order %>"
             <?php if ($block->getMapHomeIcon()): ?>home-icon="<%- data.home_icon %>"<?php endif; ?>
+            <?php if ($block->getMapStoreIcon()): ?>store-map-icon="<%- data.store_icon %>"<?php endif; ?>
             use-standard="<%- data.use_standard %>"
             use-drop-points="<%- data.use_drop_points %>"
             default-service="<%- data.default_service %>"

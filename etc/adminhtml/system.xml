@@ -220,8 +220,18 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
+                <field id="map_store_icon" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="241" showInDefault="1" showInWebsite="1" >
+                    <label>Map Store Icon</label>
+                    <comment>Sets the store icon on the map</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">gfs/map/icons</base_url>
+                    <upload_dir config="system" scope_info="1">gfs/map/icons</upload_dir>
+                    <depends>
+                        <field id="carriers/gfs/active">1</field>
+                    </depends>
+                </field>
                 <field id="use_standard" translate="label" type="select" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Standard</label>
+                    <label>Inc Standard</label>
                     <comment><![CDATA[Determine if the standard (non-day-definite) options are shown if there are non-day-definite services available. Defaults to true.]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
@@ -229,7 +239,7 @@
                     </depends>
                 </field>
                 <field id="use_droppoints" translate="label" type="select" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Drop Points</label>
+                    <label>Inc Drop Points</label>
                     <comment><![CDATA[Determine if the drop point options are shown, if drop point services are available. Defaults to true.]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
@@ -237,23 +247,23 @@
                     </depends>
                 </field>
                 <field id="use_calendar" translate="label" type="select" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Calender</label>
+                    <label>Inc Calender</label>
                     <comment><![CDATA[Determine if the calendar (day definite) options are shown if there are day-definite services available. Defaults to true.]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
-                <field id="use_stores" translate="label" type="select" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Stores</label>
-                    <comment><![CDATA[Provide the available stores in Collect Your Order.]]></comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="carriers/gfs/active">1</field>
-                    </depends>
-                </field>
+<!--                <field id="use_stores" translate="label" type="select" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                    <label>Use Stores</label>-->
+<!--                    <comment><![CDATA[Provide the available stores in Collect Your Order.]]></comment>-->
+<!--                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+<!--                    <depends>-->
+<!--                        <field id="carriers/gfs/active">1</field>-->
+<!--                    </depends>-->
+<!--                </field>-->
                 <field id="use_droppoints_stores" translate="label" type="select" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Drop Point Stores</label>
+                    <label>Inc Drop Point Stores</label>
                     <comment><![CDATA[Provide the available stores in Collect Your Order combined in with the droppoints on the same map.]]></comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
