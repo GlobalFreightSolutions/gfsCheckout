@@ -2,9 +2,6 @@
 
 This module provides and integration for the Global Freight Solutions Checkout Widget that will provide a variety of shipping options that will be shown in the Magento 2 Checkout
 
-## Version:
-2.0.0
-
 ## Developers:
 Global Freight Solutions - https://github.com/GlobalFreightSolutions
 
