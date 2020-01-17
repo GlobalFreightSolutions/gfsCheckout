@@ -155,7 +155,7 @@
                         <field id="carriers/gfs/active">1</field>
                     </depends>
                 </field>
-                <field id="drop_point_title" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="drop_point_delivery_title" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Drop Point Delivery Title</label>
                     <comment><![CDATA[Title displayed for the drop point section. Defaults to 'Collect your order'.]]></comment>
                     <validate>required-entry</validate>
@@ -212,7 +212,7 @@
                 </field>
                 <field id="map_home_icon" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="241" showInDefault="1" showInWebsite="1" >
                     <label>Map Home Icon</label>
-                    <comment>Sets the home icon on the map</comment>
+                    <comment>Sets the home icon on the map. The size should be up to 52x52 for any icon</comment>
                     <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
                     <base_url type="media" scope_info="1">gfs/map/icons</base_url>
                     <upload_dir config="system" scope_info="1">gfs/map/icons</upload_dir>
@@ -222,7 +222,7 @@
                 </field>
                 <field id="map_store_icon" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="241" showInDefault="1" showInWebsite="1" >
                     <label>Map Store Icon</label>
-                    <comment>Sets the store icon on the map</comment>
+                    <comment>Sets the store icon on the map. The size should be up to 52x52 for any icon</comment>
                     <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
                     <base_url type="media" scope_info="1">gfs/map/icons</base_url>
                     <upload_dir config="system" scope_info="1">gfs/map/icons</upload_dir>

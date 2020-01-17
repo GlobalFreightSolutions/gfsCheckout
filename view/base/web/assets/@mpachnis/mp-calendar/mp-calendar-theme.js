@@ -100,13 +100,13 @@ const mpCalendarTheme=document.createElement("template");mpCalendarTheme.setAttr
             }
 
             /* month selection */
-            #montSelection, #yearSelection {
+            #monthSelection, #yearSelection {
                 overflow: hidden;
                 background: none;
                 border: none;
                 color: var(--header-icon-bg);
-                font-size: 17px;
-                font-family: "Helvetica Neue";
+                font-size: 15px;
+                font-family: Helvetica, "Helvetica Neue";
                 font-weight: bold;
                 text-align-last: right;
                 cursor: pointer;
@@ -119,7 +119,7 @@ const mpCalendarTheme=document.createElement("template");mpCalendarTheme.setAttr
 
             }
 
-                #montSelection option, #yearSelection option {
+                #monthSelection option, #yearSelection option {
                     direction: ltr;
                 }
 
@@ -182,6 +182,7 @@ const mpCalendarTheme=document.createElement("template");mpCalendarTheme.setAttr
                     font-size: 10px;
                     width: 20px;
                     height: 60%;
+                    color: var(--inner-date-color);
                     position: absolute;
                     top: 7px;
                     right: 0;
@@ -537,7 +538,6 @@ const mpCalendarTheme=document.createElement("template");mpCalendarTheme.setAttr
                     text-align: left;
                     display: block;
                 }
-
 
                 .mp-cld-day.prevMonth:hover .mp-cld-event,
                 .mp-cld-day.prevMonth:hover .eventLeft,

@@ -9,7 +9,7 @@
         'default_delivery_method': '<?= $block->getDefaultDeliveryMethod() ?>',
         'standard_delivery_title': '<?= $block->getStandardDeliveryTitle() ?>',
         'calendar_delivery_title': '<?= $block->getCalendarDeliveryTitle() ?>',
-        'drop_point_title': '<?= $block->getDropPointTitle() ?>',
+        'drop_point_delivery_title': '<?= $block->getDropPointTitle() ?>',
         'drop_point_list_button_name': '<?= $block->getDropPointListButtonName() ?>',
         'drop_point_list_button_name_unselected': '<?= $block->getDropPointListButtonNameUnselected() ?>',
         'drop_point_sort': '<?= $block->getDropPointSort() ?>',
@@ -58,11 +58,11 @@
             droppoint-sort-list="<%- data.drop_point_sort %>"
             standard-delivery-title="<%- data.standard_delivery_title %>"
             calendar-delivery-title="<%- data.calendar_delivery_title %>"
-            drop-point-title="<%- data.drop_point_title %>"
+            drop-point-delivery-title="<%- data.drop_point_delivery_title %>"
             display-button-text="<%- data.drop_point_list_button_name %>"
             display-button-deselected-text="<%- data.drop_point_list_button_name_unselected %>"
             service-sort-order="<%- data.service_sort_order %>"
-            <?php if ($block->getMapHomeIcon()): ?>home-icon="<%- data.home_icon %>"<?php endif; ?>
+            <?php if ($block->getMapHomeIcon()): ?>home-map-icon="<%- data.home_icon %>"<?php endif; ?>
             <?php if ($block->getMapStoreIcon()): ?>store-map-icon="<%- data.store_icon %>"<?php endif; ?>
             use-standard="<%- data.use_standard %>"
             use-drop-points="<%- data.use_drop_points %>"

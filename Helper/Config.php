@@ -116,7 +116,7 @@ class Config extends Data
     /**
      * Get Drop Point Delivery Title
      */
-    const CONFIG_DROP_POINT_DELIVERY_TITLE = 'carriers/gfs/drop_point_title';
+    const CONFIG_DROP_POINT_DELIVERY_TITLE = 'carriers/gfs/drop_point_delivery_title';
 
     /**
      * Get Drop Point List Button Name

@@ -116,7 +116,7 @@ define([
          */
         generateGfsWidgetHtml: function(response)
         {
-            var gfsData = btoa(JSON.stringify(response.data)),
+            var gfsData = btoa(unescape(encodeURIComponent(JSON.stringify(response.data)))),
                 initialAddress = response.initial_address,
                 gfsWidgetTemplate = mageTemplate('#gfs-checkout-widget-template');
 
@@ -126,7 +126,7 @@ define([
                     'currency_symbol': window.gfsData.currency_symbol,
                     'standard_delivery_title': window.gfsData.standard_delivery_title,
                     'calendar_delivery_title': window.gfsData.calendar_delivery_title,
-                    'drop_point_title': window.gfsData.drop_point_title,
+                    'drop_point_delivery_title': window.gfsData.drop_point_delivery_title,
                     'service_sort_order': window.gfsData.service_sort_order,
                     'home_icon': window.gfsData.home_icon,
                     'use_standard': window.gfsData.use_standard,

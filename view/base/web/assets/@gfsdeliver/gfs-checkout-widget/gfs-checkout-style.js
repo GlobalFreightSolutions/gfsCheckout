@@ -55,6 +55,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                     --gfs-dropdown-menu-border-radius: 3px 3px 0 0;
                     --gfs-dropdown-item-hover: #e2e0e0;
                     --font-size: 14px;
+                    --tabs-min-height: 40px;
 
                     --cld-selected-day-bg: #006df0;
 
@@ -220,6 +221,7 @@ import"../../@polymer/polymer/polymer-element.js";const GfsCheckoutStyle=documen
                     vaadin-tabs[orientation="horizontal"] {
                         background: #f8f8f8;
                         margin-bottom: 20px;
+                        min-height: var(--tabs-min-height);
                         border-bottom: none;
                         box-shadow: none;
                     }
